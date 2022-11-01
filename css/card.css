@@ -1,0 +1,76 @@
+#ID_Surname {
+    position: absolute;
+    left: 205px;
+    top: 80px;
+}
+
+#ID_Names {
+    position: absolute;
+    left: 205px;
+    top: 125px;
+}
+
+#ID_Sex {
+    position: absolute;
+    left: 205px;
+    top: 175px;
+}
+
+#ID_Nationality {
+    position: absolute;
+    left: 303px;
+    top: 175px;
+}
+
+#ID_Delivery {
+    position: absolute;
+    left: 205px;
+    top: 220px;
+}
+
+#ID_Expiration {
+    position: absolute;
+    left: 368px;
+    top: 220px;
+}
+
+#ID_BirthPlace {
+    position: absolute;
+    left: 205px;
+    top: 265px;
+}
+
+#ID_Picture {
+    position: absolute;
+    width: 159px;
+    height: 227px;
+    left: 27px;
+    top: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#ID_Picture_Image {
+    height: 100%;
+    transform: scale(1.1);
+}
+
+#qrcode-container {
+    position: absolute;
+    width: 87px;
+    height: 87px;
+    left: 400px;
+    top: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+}
+
+#qrcode-container img {
+    width: 79px;
+    height: 79px;
+    object-fit: cover;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Créateur de cartes d'identité Listenbourgeoises</title>
+        <meta name="description" content="Obtenez immédiatement une carte d'identité au Listenbourg avec ce site web simple d'utilisation. Devenez un vrai citoyen avec des papiers authentifiés et reconnus.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta property="og:title" content="Créateur de cartes d'identité Listenbourgeoises">
+        <meta property="og:site_name" content="vincelinise.com">
+        <meta property="og:url" content="https://listenbourg.vincelinise.com/carte-identite/">
+        <meta property="og:description" content="Obtenez immédiatement une carte d'identité au Listenbourg avec ce site web simple d'utilisation. Devenez un vrai citoyen avec des papiers authentifiés et reconnus.">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="https://i.ibb.co/6F3K7sJ/image.png">
+
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/card.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="PreviewIDCard">
+            <div id="IDCard" class="animate__animated">
+                <div id="ID_Picture">
+                    <img id="ID_Picture_Image"/>
+                </div>
+
+                <div id="qrcode-container">
+
+                </div>
+
+                <p id="ID_Surname" class="IDCardElement"></p>
+                <p id="ID_Names" class="IDCardElement"></p>
+                <p id="ID_Sex" class="IDCardElement"></p>
+                <p id="ID_Nationality" class="IDCardElement"></p>
+                <p id="ID_Delivery" class="IDCardElement"></p>
+                <p id="ID_Expiration" class="IDCardElement"></p>
+                <p id="ID_BirthPlace" class="IDCardElement"></p>
+
+                <img src="./assets/CardOverlay.svg" class="IDCardOverlay">
+                <img src="./assets/CardBase.png" class="IDCardBase">
+            </div>
+        </div>
+
+        <div id="CustomIDCard">
+            <div class="CustomTitle">
+                <img src="./assets/logo.svg" class="CustomLogo">
+                <h2>Générateur de carte d'identité de la République du Listenbourg</h2>
+                <p>Ceci est un générateur qui crée une image contenant votre carte d'identité. (Ce générateur est un test et n'est pas officiel.)</p>
+            </div>
+            <hr/>
+            <div id="IDForm">
+                <label for="Surname">Nom de famille</label><br/>
+                <input type="text" id="Surname" name="Surname" placeholder="e.g. Martin" value="MARTIN" required><br/>
+
+                <label for="Names">Prénom(s)</label><br/>
+                <input type="text" id="Names" name="Names" placeholder="e.g. Gaspard" value="Gaspard" required><br/>
+
+                <label for="Names">Sexe</label><br/>
+                <select id="Sex" name="Sex">
+                    <option value="M">Masculin</option>
+                    <option value="F">Féminin</option>
+                    <option value="X">Non précisé</option>
+                </select><br/>
+
+                <label for="Picture">Photo d'identité</label><br/>
+                <input type="file" id="Picture" name="Picture" accept="image/*" required><br/>
+
+                <button onclick="SubmitIDForm()">Générer</button>
+                <button class="downloadButton" onclick="DownloadIDForm()">Télécharger</button>
+            </div>
+        </div>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+        <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>

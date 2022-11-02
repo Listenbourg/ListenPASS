@@ -83,7 +83,7 @@
                     <option value="X">Non précisé</option>
                 </select><br/>
 
-                <label for="BirthPlace">Lieu de naissance</label><br/>
+                <label for="BirthPlace">Lieu de naissance (région)</label><br/>
                 <select id="BirthPlace" name="BirthPlace">
                     <option value="Flußerde">Flußerde</option>
                     <option value="Kusterde">Kusterde</option>
@@ -97,7 +97,7 @@
 
                 <div class="buttons">
                     <button onclick="SubmitIDForm()">Générer</button>
-                    <button class="downloadButton disabled" onclick="DownloadIDForm()">Télécharger</button>
+                    <button class="downloadButton disabled" onclick="DownloadIDForm()" id="Download">Télécharger</button>
                 </div>
             </div>
             <small class="terms">(C) 2022 Listenbourg - <a href="https://twitter.com/DevListenbourg">Twitter</a> - <a href="https://github.com/Listenbourg/GenerateurCNI">GitHub</a> - <a href="https://github.com/Listenbourg/GenerateurCNI/issues">Signaler un problème</a></small>

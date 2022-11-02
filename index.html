@@ -53,7 +53,7 @@
             <div class="CustomTitle">
                 <img src="./assets/logo.svg" class="CustomLogo">
                 <h2>Générateur de carte d'identité de la République du Listenbourg</h2>
-                <p>Ceci est un générateur qui crée une image contenant votre carte d'identité. (Ce générateur est un test et n'est pas officiel.)</p>
+                <p>Ce générateur crée une carte d'identité officielle et reconnue du Listenbourg.</p>
             </div>
             <hr/>
             <div id="IDForm">
@@ -63,19 +63,31 @@
                 <label for="Names">Prénom(s)</label><br/>
                 <input type="text" id="Names" name="Names" placeholder="e.g. Gaspard" value="Gaspard" required><br/>
 
-                <label for="Names">Sexe</label><br/>
+                <label for="Sex">Sexe</label><br/>
                 <select id="Sex" name="Sex">
                     <option value="M">Masculin</option>
                     <option value="F">Féminin</option>
                     <option value="X">Non précisé</option>
                 </select><br/>
 
+                <label for="BirthPlace">Lieu de naissance</label><br/>
+                <select id="BirthPlace" name="BirthPlace">
+                    <option value="Flußerde">Flußerde</option>
+                    <option value="Kusterde">Kusterde</option>
+                    <option value="Mitteland">Mitteland</option>
+                    <option value="Caséière">Caséière</option>
+                    <option value="Adriàs">Adriàs</option>
+                </select><br/>
+
                 <label for="Picture">Photo d'identité</label><br/>
                 <input type="file" id="Picture" name="Picture" accept="image/*" required><br/>
 
-                <button onclick="SubmitIDForm()">Générer</button>
-                <button class="downloadButton" onclick="DownloadIDForm()">Télécharger</button>
+                <div class="buttons">
+                    <button onclick="SubmitIDForm()">Générer</button>
+                    <button class="downloadButton" onclick="DownloadIDForm()">Télécharger</button>
+                </div>
             </div>
+            <small class="terms">(C) 2022 Listenbourg - <a href="https://github.com/Listenbourg/GenerateurCNI">GitHub</a></small>
         </div>
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>

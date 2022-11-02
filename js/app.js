@@ -76,6 +76,15 @@ function SubmitIDForm() {
         `;
     }
 
+    if(IDCardData.ID_Surname.length > 14 || IDCardData.ID_Names.length > 14) {
+        IDCardData.ID_Validity = false;
+        document.getElementById("errors").innerHTML += `
+            <div class="error">
+                <p>Votre nom ou votre prénom est trop long.</p>
+            </div>
+        `;
+    }
+
     let FinalID = CreateIDCard(IDCardData);
     ApplyIDCard(document.getElementById("IDCard"), FinalID);
 }

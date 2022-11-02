@@ -1,3 +1,5 @@
+@import url('https://fonts.cdnfonts.com/css/hk-groteks');
+
 body {
     margin: 0;
     padding: 0;
@@ -7,7 +9,7 @@ body {
 }
 
 * {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'HK Grotesk', sans-serif;
 }
 
 /* Interface de création */
@@ -34,11 +36,27 @@ body {
 
     line-height: 28px;
     font-size: 24px;
+
+    font-family: 'HK Grotesk', sans-serif;
+    font-weight: 700;
+}
+
+.CustomTitle p {
+    font-family: 'HK Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+#IDForm {
+    margin-bottom: 20px !important;
 }
 
 #IDForm label {
-    font-size: 12px;
-    color: #555;
+    font-family: 'HK Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+
+    color: #55555599;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -46,15 +64,22 @@ body {
 #IDForm input, #IDForm select {
     margin-bottom: 15px !important;
     margin-top: 3px !important;
-    padding: 5px 10px !important;
+    padding: 8px 14px !important;
     font-size: 16px;
-    border-radius: 4px;
-    border: 1px solid #555;
-    width: calc(100% - 20px);
+    border-radius: 0px;
+    border: 1px solid #55555555;
+    width: calc(100% - 28px);
+
+    font-family: 'HK Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
 }
 
 #IDForm select {
     width: 100%;
+    height: 40px;
+    background: none;
+    -webkit-appearance: none;
 }
 
 #IDForm input:focus, #IDForm select:focus {
@@ -62,15 +87,28 @@ body {
     outline: 2px solid #0066ff55;
 }
 
+#IDForm .buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
 #IDForm button {
     padding: 7px 12px !important;
     font-size: 16px;
-    border-radius: 4px;
     background-color: #0066ff;
-    border: 1px solid #0045ff;
     color: #fff;
     font-weight: 500;
     margin-top: 10px !important;
+
+    border: none;
+
+    width: 100%;
+
+    font-family: 'HK Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
 }
 
 #IDForm button:hover {
@@ -81,7 +119,7 @@ body {
 
 .downloadButton {
     background: none !important;
-    border: 1px solid ##0066ff !important;
+    border: 1px solid #0066ff !important;
     color: #0066ff !important;
 }
 
@@ -106,25 +144,32 @@ body {
 #IDCard {
     position: relative;
     margin: 10px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5), 0px 2px 4px rgba(0, 0, 0, 0.25), inset 0px 3px 0px rgba(255, 255, 255, 0.25), inset 0px -3px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
 }
 
 .IDCardBase {
     z-index: -99;
-    width: 510px;
+    min-width: 510px;
+    max-width: 510px;
     height: 333px;
+    border-radius: 20px;
 }
 
 .IDCardOverlay {
     position: absolute;
     top: 0;
-    left: 4px;
+    left: 0;
     z-index: 999999;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
 }
 
 .IDCardElement {
-    font-family: 'Arial';
+    font-family: 'HK Grotesk', sans-serif;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 18px;
     line-height: 93.02%;
     /* identical to box height, or 17px */
@@ -149,10 +194,34 @@ body {
 
 @media screen and (max-width: 600px) {
     #IDCard {
-        zoom: 0.75;
+        zoom: 0.68;
     }
 }
 
 .aboutToPrint {
     zoom: 1 !important;
+    border-radius: 0px !important;
+    box-shadow: none !important;
+}
+
+.aboutToPrint .IDCardOverlay, .aboutToPrint .IDCardBase {
+    border-radius: 0px !important;
+}
+
+@media screen and (max-width: 400px) {
+    #IDCard {
+        zoom: 0.60;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    #IDCard {
+        zoom: 0.50;
+    }
+}
+
+.terms {
+    margin-top: 20px !important;
+    color: #55555599 !important;
+    font-weight: 500 !important;
 }

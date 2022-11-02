@@ -116,6 +116,10 @@ html {
     outline: 2px solid #0066ff55;
 }
 
+#IDForm input:hover, #IDForm select:hover {
+    outline: 2px solid #0066ff55;
+}
+
 #IDForm .buttons {
     display: flex;
     justify-content: space-between;
@@ -223,6 +227,8 @@ html {
 
     letter-spacing: -0.02em;
 
+    position: absolute;
+
     color: #000000;
 }
 
@@ -249,6 +255,7 @@ html {
     zoom: 1 !important;
     border-radius: 0px !important;
     box-shadow: none !important;
+    transform: scale(3);
 }
 
 .aboutToPrint .IDCardOverlay, .aboutToPrint .IDCardBase {

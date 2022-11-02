@@ -1,41 +1,34 @@
 #ID_Surname {
-    position: absolute;
     left: 204px;
     top: 82px;
 }
 
 #ID_Names {
-    position: absolute;
     left: 204px;
     top: 130px;
 }
 
 #ID_Sex {
-    position: absolute;
     left: 204px;
     top: 177px;
 }
 
 #ID_Nationality {
-    position: absolute;
     left: 303px;
     top: 177px;
 }
 
 #ID_Delivery {
-    position: absolute;
     left: 204px;
     top: 225px;
 }
 
 #ID_Expiration {
-    position: absolute;
     left: 369px;
     top: 225px;
 }
 
 #ID_BirthPlace {
-    position: absolute;
     left: 204px;
     top: 272px;
 }
@@ -70,6 +63,9 @@
 }
 
 #qrcode-container img {
+    position: absolute;
+    left: 5px;
+    top: 4px;
     width: 79px;
     height: 79px;
     object-fit: cover;

@@ -261,6 +261,10 @@ html {
     display: flex;
 }
 
+.aboutToPrint #ShareIDCard {
+    height: 510px;
+}
+
 @media screen and (max-width: 400px) {
     #IDCard {
         zoom: 0.60;
@@ -331,7 +335,7 @@ html {
 
 #ShareIDCard {
     width: 521px;
-    height: 510px;
+    height: 350px;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -1,50 +1,51 @@
 #ID_Surname {
     position: absolute;
-    left: 205px;
-    top: 80px;
+    left: 204px;
+    top: 82px;
 }
 
 #ID_Names {
     position: absolute;
-    left: 205px;
-    top: 125px;
+    left: 204px;
+    top: 130px;
 }
 
 #ID_Sex {
     position: absolute;
-    left: 205px;
-    top: 175px;
+    left: 204px;
+    top: 177px;
 }
 
 #ID_Nationality {
     position: absolute;
     left: 303px;
-    top: 175px;
+    top: 177px;
 }
 
 #ID_Delivery {
     position: absolute;
-    left: 205px;
-    top: 220px;
+    left: 204px;
+    top: 225px;
 }
 
 #ID_Expiration {
     position: absolute;
-    left: 368px;
-    top: 220px;
+    left: 369px;
+    top: 225px;
 }
 
 #ID_BirthPlace {
     position: absolute;
-    left: 205px;
-    top: 265px;
+    left: 204px;
+    top: 272px;
 }
 
 #ID_Picture {
+    background: red;
     position: absolute;
-    width: 159px;
-    height: 227px;
-    left: 27px;
+    width: 162px;
+    height: 232px;
+    left: 23px;
     top: 75px;
     display: flex;
     align-items: center;
@@ -59,9 +60,9 @@
 
 #qrcode-container {
     position: absolute;
-    width: 87px;
+    width: 89px;
     height: 87px;
-    left: 400px;
+    left: 402px;
     top: 75px;
     display: flex;
     align-items: center;

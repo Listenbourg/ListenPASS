@@ -59,23 +59,6 @@ html {
     opacity: 50%;
 }
 
-#errors {
-    margin-top: 20px !important;
-}
-
-.error {
-    background: #FE0000;
-    padding: 12px 18px !important;
-    margin-bottom: 10px !important;
-    animation: main 0.2s !important;
-}
-
-.error p {
-    color: #fff;
-    font-size: 16px;
-    font-weight: 600;
-}
-
 #IDForm {
     margin-bottom: 20px !important;
 }
@@ -107,6 +90,7 @@ html {
 #IDForm select {
     width: 100%;
     height: 40px;
+    cursor: pointer;
     background: none;
     -webkit-appearance: none;
 }
@@ -168,7 +152,6 @@ html {
 /* Interface de prévisualisation */
 
 #PreviewIDCard {
-    background-color: #F6F1F1;
     padding: 20px;
     width: 50vw;
     height: calc(100% - 40px);
@@ -176,54 +159,8 @@ html {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-}
-
-#IDCard {
-    position: relative;
-    margin: 10px;
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5), 0px 2px 4px rgba(0, 0, 0, 0.25), inset 0px 3px 0px rgba(255, 255, 255, 0.25), inset 0px -3px 0px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
-}
-
-#IDCard * {
     user-select: none;
     pointer-events: none;
-}
-
-#IDCard.waiting {
-    opacity: 50%;
-    filter: blur(2px);
-}
-
-.IDCardBase {
-    z-index: -99;
-    min-width: 510px;
-    max-width: 510px;
-    height: 333px;
-    border-radius: 20px;
-}
-
-.IDCardOverlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 999999;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-}
-
-.IDCardElement {
-    font-family: 'HK Grotesk', sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 93.02%;
-    /* identical to box height, or 17px */
-
-    letter-spacing: -0.02em;
-
-    color: #000000;
 }
 
 /* Repsonsiive */
@@ -231,39 +168,6 @@ html {
 @media screen and (max-width: 1070px) {
     body {
         display: block;
-    }
-
-    #PreviewIDCard, #CustomIDCard {
-        width: calc(100vw - 40px);
-        height: fit-content;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    #IDCard {
-        zoom: 0.68;
-    }
-}
-
-.aboutToPrint {
-    zoom: 1 !important;
-    border-radius: 0px !important;
-    box-shadow: none !important;
-}
-
-.aboutToPrint .IDCardOverlay, .aboutToPrint .IDCardBase {
-    border-radius: 0px !important;
-}
-
-@media screen and (max-width: 400px) {
-    #IDCard {
-        zoom: 0.60;
-    }
-}
-
-@media screen and (max-width: 350px) {
-    #IDCard {
-        zoom: 0.50;
     }
 }
 
@@ -298,14 +202,10 @@ html {
       color: white;
     }
 
-    #IDForm input, #IDForm select {
+    #IDForm input, #IDForm select, #IDForm select option {
         border: 1px solid #55555555;
         color: #fff;
-        background: none !important;
-    }
-
-    #IDCard {
-        background-color: #fff;
+        background: #27262a !important;
     }
 
     .CustomLogo {
@@ -317,4 +217,31 @@ html {
     cursor: not-allowed !important;
     opacity: 50%;
     pointer-events: none;
+}
+
+.label-error {
+    color: red;
+}
+.label-error:not(.error-visible) {
+    display: none;
+}
+
+#PreviewIDCard:not(.visible) canvas#canvas {
+    display: none;
+}
+
+#PreviewIDCard.visible .waiting {
+    display: none;
+}
+
+#PreviewIDCard .waiting {
+    filter: blur(2px);
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+canvas#canvas {
+    max-width: 100%;
+    max-height: 100%;
 }

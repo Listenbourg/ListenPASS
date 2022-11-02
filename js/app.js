@@ -1,3 +1,96 @@
+const MULTIPLIER = 4;
+const SIZE = {
+    width: 502*MULTIPLIER,
+    height: 325*MULTIPLIER,
+}
+
+const clear = (value, limit = 30) =>
+    value
+        .trim()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-zA-Z- ]/g, "")
+        .replace(/\s\s+/g, " ")
+        .toUpperCase()
+        .slice(0, limit);
+
+
+let cni = null,
+cni_filo = null;
+
+const getImg = (url) =>
+    new Promise(resolve => {
+        const imageObj = new Image();
+        imageObj.onload = ()=>resolve(imageObj);
+        imageObj.src = url;
+    });
+
+window.onload = ()=>Promise.all([
+    (new FontFace(
+        "Roboto-BOLD",
+        "url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBBc4.woff2)"
+    )).load().then((loaded_face) => document.fonts.add(loaded_face)),
+    getImg("/assets/CNI.svg").then((img) => (cni = img)),
+    getImg("/assets/CNI-FILI.svg").then((img) => (cni_filo = img)),
+]);
+
+function crop(image) {
+    const width = 161;
+    const height = 229;
+    const aspectRatio = width / height;
+
+    let newWidth;
+    let newHeight;
+
+    const imageRatio = image.naturalWidth / image.naturalHeight;
+
+    if (aspectRatio >= imageRatio) {
+        newWidth = image.naturalWidth;
+        newHeight = image.naturalWidth / aspectRatio;
+    } else {
+        newWidth = image.naturalHeight * aspectRatio;
+        newHeight = image.naturalHeight;
+    }
+
+    const x = (image.naturalWidth - newWidth) / 2;
+    const y = (image.naturalHeight - newHeight) / 2;
+
+    return {
+        x: x,
+        y: y,
+        width: newWidth,
+        height: newHeight,
+    };
+}
+
+const canvadraw = async (nom,prenom,sexe,date_deliv, date_expi, lieu,raw_image) => {
+    const image = await getImg((window.webkitURL || window.URL).createObjectURL(raw_image))
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = SIZE.width;
+    canvas.height = SIZE.height;
+    ctx.clearRect(0, 0, SIZE.width, SIZE.height);
+    ctx.font = `${18*MULTIPLIER}px Roboto-BOLD`;
+    ctx.drawImage(cni, 0, 0, 502*MULTIPLIER, 325*MULTIPLIER);
+    ctx.fillText(nom, 201*MULTIPLIER, 112*MULTIPLIER);
+    ctx.fillText(prenom, 201*MULTIPLIER, 159*MULTIPLIER);
+    ctx.fillText(sexe, 201*MULTIPLIER, 206*MULTIPLIER);
+    ctx.fillText("LIS", 299*MULTIPLIER, 206*MULTIPLIER);
+    ctx.fillText(date_deliv, 201*MULTIPLIER, 253*MULTIPLIER);
+    ctx.fillText(date_expi, 364*MULTIPLIER, 253*MULTIPLIER);
+    ctx.fillText(lieu, 201*MULTIPLIER, 300*MULTIPLIER);
+    const pos = crop({naturalWidth: image.naturalWidth, naturalHeight: image.naturalHeight});
+    ctx.drawImage(image,
+        pos.x, pos.y,
+        pos.width, pos.height,
+        22*MULTIPLIER, 72*MULTIPLIER,
+        161*MULTIPLIER, 229*MULTIPLIER);
+        ctx.drawImage(document.querySelector("#qrcode img"), 400.05*MULTIPLIER,77.05*MULTIPLIER,78.9*MULTIPLIER,78.9*MULTIPLIER)
+    ctx.drawImage(cni_filo, 0, 0, 502*MULTIPLIER, 325*MULTIPLIER);
+    document.querySelector("#PreviewIDCard").classList.add("visible")
+    document.querySelector(".buttons .downloadButton").classList.remove("disabled")
+};
+
 String.prototype.hashCode = function() {
     var hash = 0,
       i, chr;
@@ -17,8 +110,8 @@ function CreateIDCard(IDCardData) {
     ExpireDate.setFullYear(ExpireDate.getFullYear() + 5);
 
     let IDCard = {
-        "ID_Surname": IDCardData.ID_Surname.toUpperCase(),
-        "ID_Names": IDCardData.ID_Names,
+        "ID_Surname": clear(IDCardData.ID_Surname),
+        "ID_Names": clear(IDCardData.ID_Names),
         "ID_Sex": IDCardData.ID_Sex,
         "ID_Nationality": "LIS",
         "ID_Picture": IDCardData.ID_Picture,
@@ -31,123 +124,69 @@ function CreateIDCard(IDCardData) {
     return IDCard;
 }
 
+// If error : show the error label
+const errorLabel = (error, label)=>document.querySelector("label[for='"+label+"'] span.label-error")?.classList[error?"add":"remove"]("error-visible");
+
 function SubmitIDForm() {
     let form = document.getElementById("IDForm");
 
-    let Picture = form.children["Picture"].files[0];
-    // read base64 encoded image
-    let reader = new FileReader();
-    reader.onloadend = function () {
-        document.getElementById("ID_Picture_Image").src = reader.result;
-    }
-    if (Picture) {
-        reader.readAsDataURL(Picture);
-    } else {
-        document.getElementById("ID_Picture_Image").src = "";
-    }
+    let Picture = form.children["Picture"]?.files?.[0];
 
     let IDCardData = {
-        "ID_Surname": form.children["Surname"].value,
-        "ID_Names": form.children["Names"].value,
+        "ID_Surname": clear(form.children["Surname"].value, 15),
+        "ID_Names": clear(form.children["Names"].value, 15),
         "ID_Sex": form.children["Sex"].value,
-        "ID_Picture": form.children["Picture"].value,
+        "ID_Picture": Picture,
         "ID_BirthPlace": form.children["BirthPlace"].value,
     }
 
     IDCardData.ID_Validity = true;
     document.getElementById("errors").innerHTML = "";
 
+    errorLabel(!Picture, "Picture");
+    errorLabel(clear(IDCardData.ID_Surname).length <=0, "Surname");
+    errorLabel(clear(IDCardData.ID_Names).length <=0, "Names");
+    errorLabel(clear(IDCardData.ID_BirthPlace).length <=0, "BirthPlace");
+    errorLabel(!["M","F","X"].includes(IDCardData.ID_Sex), "Sex");
 
-    if(!form.children["Picture"].files[0]) {
-        IDCardData.ID_Validity = false;
-        document.getElementById("errors").innerHTML += `
-            <div class="error">
-                <p>Il n'y a pas de photo d'identité ou celle ci n'est pas dans un format supporté.</p>
-            </div>
-        `;
-    }
-    
-    if(!IDCardData.ID_Surname || !IDCardData.ID_Names) {
-        IDCardData.ID_Validity = false;
-        document.getElementById("errors").innerHTML += `
-            <div class="error">
-                <p>Des informations sur vous sont manquantes.</p>
-            </div>
-        `;
-    }
-
-    if(IDCardData.ID_Surname.length > 14 || IDCardData.ID_Names.length > 14) {
-        IDCardData.ID_Validity = false;
-        document.getElementById("errors").innerHTML += `
-            <div class="error">
-                <p>Votre nom ou votre prénom est trop long.</p>
-            </div>
-        `;
-    }
-
+    if(!Picture ||
+        clear(IDCardData.ID_Surname).length <=0 ||
+        clear(IDCardData.ID_Names).length <=0 ||
+        clear(IDCardData.ID_BirthPlace).length <=0 ||
+        !["M","F","X"].includes(IDCardData.ID_Sex)) return;
     let FinalID = CreateIDCard(IDCardData);
     ApplyIDCard(document.getElementById("IDCard"), FinalID);
 }
 
-function ApplyIDCard(IDCardElem, IDCardData) {
+async function ApplyIDCard(IDCardElem, IDCardData) {
     // filling the card in DOM
-    IDCardElem.children["ID_Surname"].innerText = IDCardData.ID_Surname;
-    IDCardElem.children["ID_Names"].innerText = IDCardData.ID_Names;
-    IDCardElem.children["ID_Sex"].innerText = IDCardData.ID_Sex;
-    IDCardElem.children["ID_Nationality"].innerText = IDCardData.ID_Nationality;
-    IDCardElem.children["ID_Delivery"].innerText = new Date(IDCardData.ID_DeliverDate).toLocaleDateString();
-    IDCardElem.children["ID_Expiration"].innerText = new Date(IDCardData.ID_ExpireDate).toLocaleDateString();
-    IDCardElem.children["ID_BirthPlace"].innerText = IDCardData.ID_BirthPlace;
+
+    
+    applyQRCode(IDCardData);
+
+    await canvadraw(IDCardData.ID_Surname, IDCardData.ID_Names, IDCardData.ID_Sex, new Date(IDCardData.ID_DeliverDate).toLocaleDateString("fr"), new Date(IDCardData.ID_ExpireDate).toLocaleDateString("fr"), IDCardData.ID_BirthPlace, IDCardData.ID_Picture);
 
     IDCardElem.classList.remove("waiting");
     document.getElementsByClassName("downloadButton")[0].classList.remove("disabled");
 
-    // applying QR
-    applyQRCode(IDCardData);
-
-    // checking validity
-    if(!IDCardData.ID_Validity) {
-        document.getElementsByClassName("IDCardOverlay")[0].src = "./assets/InvalidOverlay.svg";
-    }
-    else {
-        document.getElementsByClassName("IDCardOverlay")[0].src = "./assets/CardOverlay.svg";
-    }
-
     // scroll up
-    document.getElementById("PreviewIDCard").scrollIntoView();
+    document.getElementById("canvas").scrollIntoView();
 }
 
 function applyQRCode(IDCard) {
-    document.getElementById("qrcode-container").innerHTML = "";
+    let QRData = Object.entries(IDCard).filter(([k])=>k!=="ID_Picture").map(([k,v])=>v).join(",");
 
-    let QRData = "";
-
-    for (const [key, value] of Object.entries(IDCard)) {
-        if(key != "ID_Picture") {
-            QRData += value + ",";
-        }
-    }
-
-    QRData = QRData.slice(0, -1);
-
-    let QRHash = QRData.hashCode();
-
-    QRData += "," + QRHash;
-
-    var qrc = new QRCode(
-        document.getElementById("qrcode-container"),
-        btoa(QRData)
+    const qrc = new QRCode(
+        document.getElementById("qrcode"),
+        btoa(QRData + "," + QRData.hashCode())
     );
 }
 
 function DownloadIDForm() {
-    let IDCard = document.getElementById("IDCard");
-    IDCard.classList.add("aboutToPrint");
-    html2canvas(IDCard).then(canvas => {
-        var link = document.createElement('a');
-        link.download = 'idcard.png';
-        link.href = canvas.toDataURL()
-        link.click();
-    });
-    IDCard.classList.remove("aboutToPrint");
+    let canvas = document.getElementById("canvas");
+
+    let link = document.createElement("a");
+    link.download = "cni-listenbourg.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
 }

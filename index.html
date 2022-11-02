@@ -22,6 +22,7 @@
 
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/card.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -29,26 +30,8 @@
         <![endif]-->
 
         <div id="PreviewIDCard">
-            <div id="IDCard" class="waiting">
-                <div id="ID_Picture">
-                    <img id="ID_Picture_Image"/>
-                </div>
-
-                <div id="qrcode-container">
-
-                </div>
-
-                <p id="ID_Surname" class="IDCardElement"></p>
-                <p id="ID_Names" class="IDCardElement"></p>
-                <p id="ID_Sex" class="IDCardElement"></p>
-                <p id="ID_Nationality" class="IDCardElement"></p>
-                <p id="ID_Delivery" class="IDCardElement"></p>
-                <p id="ID_Expiration" class="IDCardElement"></p>
-                <p id="ID_BirthPlace" class="IDCardElement"></p>
-
-                <img src="./assets/CardOverlay.svg" class="IDCardOverlay">
-                <img src="./assets/CardBase.png" class="IDCardBase">
-            </div>
+            <canvas id="canvas"></canvas>
+            <img src="/assets/CNI.svg" class="waiting" alt="">
         </div>
 
         <div id="CustomIDCard">
@@ -64,20 +47,20 @@
             </div>
             <hr/>
             <div id="IDForm">
-                <label for="Surname">Nom de famille</label><br/>
+                <label for="Surname">Nom de famille<span class="label-error"> - Information manquante</span></label><br/>
                 <input type="text" id="Surname" name="Surname" placeholder="e.g. MARTIN" value="" required><br/>
 
-                <label for="Names">Prénom(s)</label><br/>
+                <label for="Names">Prénom(s)<span class="label-error"> - Information manquante</span></label><br/>
                 <input type="text" id="Names" name="Names" placeholder="e.g. Gaspard" value="" required><br/>
 
-                <label for="Sex">Sexe</label><br/>
+                <label for="Sex">Sexe<span class="label-error"> - Information manquante</span></label><br/>
                 <select id="Sex" name="Sex">
                     <option value="M">Masculin</option>
                     <option value="F">Féminin</option>
                     <option value="X">Non précisé</option>
                 </select><br/>
 
-                <label for="BirthPlace">Lieu de naissance</label><br/>
+                <label for="BirthPlace">Lieu de naissance<span class="label-error"> - Information manquante</span></label><br/>
                 <select id="BirthPlace" name="BirthPlace">
                     <option value="Flußerde">Flußerde</option>
                     <option value="Kusterde">Kusterde</option>
@@ -86,7 +69,7 @@
                     <option value="Adriàs">Adriàs</option>
                 </select><br/>
 
-                <label for="Picture">Photo d'identité</label><br/>
+                <label for="Picture">Photo d'identité<span class="label-error"> - Fichier manquant</span></label><br/>
                 <input type="file" id="Picture" name="Picture" accept="image/*" required><br/>
 
                 <div class="buttons">
@@ -96,9 +79,8 @@
             </div>
             <small class="terms">(C) 2022 Listenbourg - <a href="https://twitter.com/DevListenbourg">Twitter</a> - <a href="https://github.com/Listenbourg/GenerateurCNI">GitHub</a> - <a href="https://github.com/Listenbourg/GenerateurCNI/issues">Signaler un problème</a></small>
         </div>
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-        <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+        <div style="display:none" id="qrcode"></div>
         <script src="js/app.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     </body>
 </html>

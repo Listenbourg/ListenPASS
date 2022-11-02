@@ -1,3 +1,15 @@
+String.prototype.hashCode = function() {
+    var hash = 0,
+      i, chr;
+    if (this.length === 0) return hash;
+    for (i = 0; i < this.length; i++) {
+      chr = this.charCodeAt(i);
+      hash = ((hash << 5) - hash) + chr;
+      hash |= 0; // Convert to 32bit integer
+    }
+    return hash;
+}
+
 function CreateIDCard(IDCardData) {
     let DeliverDate = new Date();
 
@@ -12,7 +24,7 @@ function CreateIDCard(IDCardData) {
         "ID_Picture": IDCardData.ID_Picture,
         "ID_DeliverDate": DeliverDate.getTime(),
         "ID_ExpireDate": ExpireDate.getTime(),
-        "ID_BirthPlace": "Listenbourg",
+        "ID_BirthPlace": IDCardData.ID_BirthPlace,
     }
 
     return IDCard;
@@ -38,10 +50,11 @@ function SubmitIDForm() {
         "ID_Names": form.children["Names"].value,
         "ID_Sex": form.children["Sex"].value,
         "ID_Picture": form.children["Picture"].value,
+        "ID_BirthPlace": form.children["BirthPlace"].value,
     }
 
     let FinalID = CreateIDCard(IDCardData);
-    ApplyIDCardAnimation(document.getElementById("IDCard"), FinalID);
+    ApplyIDCard(document.getElementById("IDCard"), FinalID);
 }
 
 function ApplyIDCard(IDCardElem, IDCardData) {
@@ -58,14 +71,22 @@ function ApplyIDCard(IDCardElem, IDCardData) {
     applyQRCode(IDCardData)
 }
 
-function ApplyIDCardAnimation(IDCardElem, IDCardData) {
-    ApplyIDCard(IDCardElem, IDCardData);
-}
-
 function applyQRCode(IDCard) {
     document.getElementById("qrcode-container").innerHTML = "";
 
-    let QRData = `(LISTENBOURGID)(V1),(SURNAME:${IDCard.ID_Surname}),(NAMES:${IDCard.ID_Names})`;
+    let QRData = "";
+
+    for (const [key, value] of Object.entries(IDCard)) {
+        if(key != "ID_Picture") {
+            QRData += value + ",";
+        }
+    }
+
+    QRData = QRData.slice(0, -1);
+
+    let QRHash = QRData.hashCode();
+
+    QRData += "," + QRHash;
 
     var qrc = new QRCode(
         document.getElementById("qrcode-container"),

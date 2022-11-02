@@ -8,6 +8,10 @@ body {
     display: flex;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     font-family: 'HK Grotesk', sans-serif;
 }
@@ -18,6 +22,7 @@ body {
     padding: 20px;
     width: 50vw;
     height: calc(100% - 40px);
+    overflow-y: scroll;
 }
 
 #CustomIDCard * {
@@ -180,6 +185,11 @@ body {
     border-radius: 20px;
 }
 
+#IDCard * {
+    user-select: none;
+    pointer-events: none;
+}
+
 #IDCard.waiting {
     opacity: 50%;
     filter: blur(2px);
@@ -301,4 +311,10 @@ body {
     .CustomLogo {
         background-image: url('../assets/logo-dark.svg');
     }
+}
+
+.downloadButton.disabled {
+    cursor: not-allowed !important;
+    opacity: 50%;
+    pointer-events: none;
 }

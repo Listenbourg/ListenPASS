@@ -62,7 +62,7 @@ function SubmitIDForm() {
         IDCardData.ID_Validity = false;
         document.getElementById("errors").innerHTML += `
             <div class="error">
-                <p>Il n'y a pas de photo de profil ou celle ci n'est pas dans un format supporté.</p>
+                <p>Il n'y a pas de photo d'identité ou celle ci n'est pas dans un format supporté.</p>
             </div>
         `;
     }
@@ -91,6 +91,7 @@ function ApplyIDCard(IDCardElem, IDCardData) {
     IDCardElem.children["ID_BirthPlace"].innerText = IDCardData.ID_BirthPlace;
 
     IDCardElem.classList.remove("waiting");
+    document.getElementsByClassName("downloadButton")[0].classList.remove("disabled");
 
     // applying QR
     applyQRCode(IDCardData);
@@ -102,6 +103,9 @@ function ApplyIDCard(IDCardElem, IDCardData) {
     else {
         document.getElementsByClassName("IDCardOverlay")[0].src = "./assets/CardOverlay.svg";
     }
+
+    // scroll up
+    document.getElementById("PreviewIDCard").scrollIntoView();
 }
 
 function applyQRCode(IDCard) {

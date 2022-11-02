@@ -258,6 +258,7 @@ html {
 
 .aboutToPrint .ShareBase {
     opacity: 100% !important;
+    display: flex;
 }
 
 @media screen and (max-width: 400px) {
@@ -309,6 +310,10 @@ html {
         background: none !important;
     }
 
+    #IDForm select option {
+        background-color: #111;
+    }
+
     #IDCard {
         background-color: #fff;
     }
@@ -340,4 +345,5 @@ html {
     top: 0;
     left: 0;
     opacity: 0%;
+    display: none;
 }

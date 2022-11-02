@@ -141,7 +141,7 @@ function applyQRCode(IDCard) {
 }
 
 function DownloadIDForm() {
-    let IDCard = document.getElementById("IDCard");
+    let IDCard = document.getElementById("ShareIDCard");
     IDCard.classList.add("aboutToPrint");
     html2canvas(IDCard).then(canvas => {
         var link = document.createElement('a');

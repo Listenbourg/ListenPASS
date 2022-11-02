@@ -152,7 +152,7 @@ html {
     cursor: pointer;
 }
 
-.downloadButton {
+.downloadButton, .previsButton {
     background: none !important;
     border: 1px solid #0066ff !important;
     color: #0066ff !important;
@@ -184,9 +184,9 @@ html {
 
 #IDCard {
     position: relative;
-    margin: 10px;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5), 0px 2px 4px rgba(0, 0, 0, 0.25), inset 0px 3px 0px rgba(255, 255, 255, 0.25), inset 0px -3px 0px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
+    z-index: 99;
 }
 
 #IDCard * {
@@ -253,13 +253,11 @@ html {
 
 .aboutToPrint {
     zoom: 1 !important;
-    border-radius: 0px !important;
-    box-shadow: none !important;
     transform: scale(3);
 }
 
-.aboutToPrint .IDCardOverlay, .aboutToPrint .IDCardBase {
-    border-radius: 0px !important;
+.aboutToPrint .ShareBase {
+    opacity: 100% !important;
 }
 
 @media screen and (max-width: 400px) {
@@ -320,8 +318,26 @@ html {
     }
 }
 
-.downloadButton.disabled {
+.downloadButton.disabled, .previsButton.disabled {
     cursor: not-allowed !important;
     opacity: 50%;
     pointer-events: none;
+}
+
+#ShareIDCard {
+    width: 521px;
+    height: 510px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.ShareBase {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0%;
 }

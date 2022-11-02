@@ -51,9 +51,10 @@
 
         <div id="CustomIDCard">
             <div class="CustomTitle">
-                <img src="./assets/logo.svg" class="CustomLogo">
+                <div class="CustomLogo"></div>
                 <h2>Générateur de carte d'identité de la République du Listenbourg</h2>
                 <p>Ce générateur crée une carte d'identité officielle et reconnue du Listenbourg.</p>
+                <small>Ces cartes sont générées et signées par votre ordinateur et aucune donnée ne transite sur nos serveurs.</small>
 
                 <div id="errors">
                     
@@ -62,7 +63,7 @@
             <hr/>
             <div id="IDForm">
                 <label for="Surname">Nom de famille</label><br/>
-                <input type="text" id="Surname" name="Surname" placeholder="e.g. Martin" value="" required><br/>
+                <input type="text" id="Surname" name="Surname" placeholder="e.g. MARTIN" value="" required><br/>
 
                 <label for="Names">Prénom(s)</label><br/>
                 <input type="text" id="Names" name="Names" placeholder="e.g. Gaspard" value="" required><br/>
@@ -91,7 +92,7 @@
                     <button class="downloadButton" onclick="DownloadIDForm()">Télécharger</button>
                 </div>
             </div>
-            <small class="terms">(C) 2022 Listenbourg - <a href="https://github.com/Listenbourg/GenerateurCNI">GitHub</a></small>
+            <small class="terms">(C) 2022 Listenbourg - <a href="https://twitter.com/DevListenbourg">Twitter</a> - <a href="https://github.com/Listenbourg/GenerateurCNI">GitHub</a> - <a href="https://github.com/Listenbourg/GenerateurCNI/issues">Signaler un problème</a></small>
         </div>
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>

@@ -41,10 +41,17 @@ body {
     font-weight: 700;
 }
 
-.CustomTitle p {
+.CustomTitle > p {
     font-family: 'HK Grotesk', sans-serif;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 17px;
+    margin-bottom: 10px !important;
+}
+
+.CustomTitle small {
+    font-weight: 500;
+    font-size: 14px;
+    opacity: 50%;
 }
 
 #errors {
@@ -126,11 +133,13 @@ body {
     font-family: 'HK Grotesk', sans-serif;
     font-weight: 500;
     font-size: 18px;
+
+    border: 1px solid #0066ff !important;
 }
 
 #IDForm button:hover {
     background-color: #0045ff;
-    border: 1px solid #0022ff;
+    border: 1px solid #0045ff !important;
     cursor: pointer;
 }
 
@@ -142,6 +151,12 @@ body {
 
 .CustomLogo {
     margin-bottom: 10px !important;
+
+    background-image: url('../assets/logo.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    width: 176px;
     height: 64px;
 }
 
@@ -256,5 +271,34 @@ body {
     100% {
         transform: translateY(0px);
         opacity: 100%;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: hsl(255, 7%, 17%);
+    }
+
+    #PreviewIDCard {
+        background-color: hsl(255, 7%, 17%);
+    }
+
+    #CustomIDCard {
+      background-color: #1C1B1F;
+      color: white;
+    }
+
+    #IDForm input, #IDForm select {
+        border: 1px solid #55555555;
+        color: #fff;
+        background: none !important;
+    }
+
+    #IDCard {
+        background-color: #fff;
+    }
+
+    .CustomLogo {
+        background-image: url('../assets/logo-dark.svg');
     }
 }

@@ -17,7 +17,7 @@ function CreateIDCard(IDCardData) {
     ExpireDate.setFullYear(ExpireDate.getFullYear() + 5);
 
     let IDCard = {
-        "ID_Surname": IDCardData.ID_Surname,
+        "ID_Surname": IDCardData.ID_Surname.toUpperCase(),
         "ID_Names": IDCardData.ID_Names,
         "ID_Sex": IDCardData.ID_Sex,
         "ID_Nationality": "LIS",

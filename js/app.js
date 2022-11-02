@@ -91,16 +91,16 @@ function SubmitIDForm() {
 
 function ApplyIDCard(IDCardElem, IDCardData) {
     // filling the card in DOM
-    IDCardElem.children["ID_Surname"].innerText = IDCardData.ID_Surname;
-    IDCardElem.children["ID_Names"].innerText = IDCardData.ID_Names;
-    IDCardElem.children["ID_Sex"].innerText = IDCardData.ID_Sex;
-    IDCardElem.children["ID_Nationality"].innerText = IDCardData.ID_Nationality;
-    IDCardElem.children["ID_Delivery"].innerText = new Date(IDCardData.ID_DeliverDate).toLocaleDateString();
-    IDCardElem.children["ID_Expiration"].innerText = new Date(IDCardData.ID_ExpireDate).toLocaleDateString();
-    IDCardElem.children["ID_BirthPlace"].innerText = IDCardData.ID_BirthPlace;
+    IDCardElem.children["ID_Surname"]    .innerText =          IDCardData.ID_Surname;
+    IDCardElem.children["ID_Names"]      .innerText =          IDCardData.ID_Names;
+    IDCardElem.children["ID_Sex"]        .innerText =          IDCardData.ID_Sex;
+    IDCardElem.children["ID_Nationality"].innerText =          IDCardData.ID_Nationality;
+    IDCardElem.children["ID_Delivery"]   .innerText = new Date(IDCardData.ID_DeliverDate).toLocaleDateString();
+    IDCardElem.children["ID_Expiration"] .innerText = new Date(IDCardData.ID_ExpireDate) .toLocaleDateString();
+    IDCardElem.children["ID_BirthPlace"] .innerText =          IDCardData.ID_BirthPlace;
 
-    IDCardElem.classList.remove("waiting");
-    document.getElementsByClassName("downloadButton")[0].classList.remove("disabled");
+    IDCardElem                         .classList.remove("waiting");
+    document.getElementByID("Download").classList.remove("disabled");
 
     // applying QR
     applyQRCode(IDCardData);

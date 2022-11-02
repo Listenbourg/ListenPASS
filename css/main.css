@@ -47,6 +47,23 @@ body {
     font-size: 16px;
 }
 
+#errors {
+    margin-top: 20px !important;
+}
+
+.error {
+    background: #FE0000;
+    padding: 12px 18px !important;
+    margin-bottom: 10px !important;
+    animation: main 0.2s !important;
+}
+
+.error p {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+}
+
 #IDForm {
     margin-bottom: 20px !important;
 }
@@ -148,6 +165,11 @@ body {
     border-radius: 20px;
 }
 
+#IDCard.waiting {
+    opacity: 50%;
+    filter: blur(2px);
+}
+
 .IDCardBase {
     z-index: -99;
     min-width: 510px;
@@ -224,4 +246,15 @@ body {
     margin-top: 20px !important;
     color: #55555599 !important;
     font-weight: 500 !important;
+}
+
+@keyframes main {
+    0% {
+        transform: translateY(10px);
+        opacity: 0%;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 100%;
+    }
 }

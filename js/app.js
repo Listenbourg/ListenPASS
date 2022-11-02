@@ -25,6 +25,7 @@ function CreateIDCard(IDCardData) {
         "ID_DeliverDate": DeliverDate.getTime(),
         "ID_ExpireDate": ExpireDate.getTime(),
         "ID_BirthPlace": IDCardData.ID_BirthPlace,
+        "ID_Validity": IDCardData.ID_Validity,
     }
 
     return IDCard;
@@ -53,6 +54,28 @@ function SubmitIDForm() {
         "ID_BirthPlace": form.children["BirthPlace"].value,
     }
 
+    IDCardData.ID_Validity = true;
+    document.getElementById("errors").innerHTML = "";
+
+
+    if(!form.children["Picture"].files[0]) {
+        IDCardData.ID_Validity = false;
+        document.getElementById("errors").innerHTML += `
+            <div class="error">
+                <p>Il n'y a pas de photo de profil ou celle ci n'est pas dans un format supporté.</p>
+            </div>
+        `;
+    }
+    
+    if(!IDCardData.ID_Surname || !IDCardData.ID_Names) {
+        IDCardData.ID_Validity = false;
+        document.getElementById("errors").innerHTML += `
+            <div class="error">
+                <p>Des informations sur vous sont manquantes.</p>
+            </div>
+        `;
+    }
+
     let FinalID = CreateIDCard(IDCardData);
     ApplyIDCard(document.getElementById("IDCard"), FinalID);
 }
@@ -67,8 +90,18 @@ function ApplyIDCard(IDCardElem, IDCardData) {
     IDCardElem.children["ID_Expiration"].innerText = new Date(IDCardData.ID_ExpireDate).toLocaleDateString();
     IDCardElem.children["ID_BirthPlace"].innerText = IDCardData.ID_BirthPlace;
 
+    IDCardElem.classList.remove("waiting");
+
     // applying QR
-    applyQRCode(IDCardData)
+    applyQRCode(IDCardData);
+
+    // checking validity
+    if(!IDCardData.ID_Validity) {
+        document.getElementsByClassName("IDCardOverlay")[0].src = "./assets/InvalidOverlay.svg";
+    }
+    else {
+        document.getElementsByClassName("IDCardOverlay")[0].src = "./assets/CardOverlay.svg";
+    }
 }
 
 function applyQRCode(IDCard) {

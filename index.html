@@ -27,7 +27,7 @@
         <![endif]-->
 
         <div id="PreviewIDCard">
-            <div id="IDCard" class="animate__animated">
+            <div id="IDCard" class="waiting">
                 <div id="ID_Picture">
                     <img id="ID_Picture_Image"/>
                 </div>
@@ -54,14 +54,18 @@
                 <img src="./assets/logo.svg" class="CustomLogo">
                 <h2>Générateur de carte d'identité de la République du Listenbourg</h2>
                 <p>Ce générateur crée une carte d'identité officielle et reconnue du Listenbourg.</p>
+
+                <div id="errors">
+                    
+                </div>
             </div>
             <hr/>
             <div id="IDForm">
                 <label for="Surname">Nom de famille</label><br/>
-                <input type="text" id="Surname" name="Surname" placeholder="e.g. Martin" value="MARTIN" required><br/>
+                <input type="text" id="Surname" name="Surname" placeholder="e.g. Martin" value="" required><br/>
 
                 <label for="Names">Prénom(s)</label><br/>
-                <input type="text" id="Names" name="Names" placeholder="e.g. Gaspard" value="Gaspard" required><br/>
+                <input type="text" id="Names" name="Names" placeholder="e.g. Gaspard" value="" required><br/>
 
                 <label for="Sex">Sexe</label><br/>
                 <select id="Sex" name="Sex">

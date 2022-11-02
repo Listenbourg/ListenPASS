@@ -1,44 +1,51 @@
 #ID_Surname {
-    left: 204px;
-    top: 82px;
+    position: absolute;
+    left: 205px;
+    top: 78px;
 }
 
 #ID_Names {
-    left: 204px;
-    top: 130px;
+    position: absolute;
+    left: 205px;
+    top: 124px;
 }
 
 #ID_Sex {
-    left: 204px;
-    top: 177px;
+    position: absolute;
+    left: 205px;
+    top: 170px;
 }
 
 #ID_Nationality {
+    position: absolute;
     left: 303px;
-    top: 177px;
+    top: 170px;
 }
 
 #ID_Delivery {
-    left: 204px;
-    top: 225px;
+    position: absolute;
+    left: 205px;
+    top: 215px;
 }
 
 #ID_Expiration {
-    left: 369px;
-    top: 225px;
+    position: absolute;
+    left: 368px;
+    top: 215px;
 }
 
 #ID_BirthPlace {
-    left: 204px;
-    top: 272px;
+    position: absolute;
+    left: 205px;
+    top: 260px;
 }
 
 #ID_Picture {
     position: absolute;
-    width: 162px;
-    height: 232px;
-    left: 23px;
-    top: 75px;
+    width: 159px;
+    height: 221px;
+    left: 27px;
+    top: 74px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,10 +59,10 @@
 
 #qrcode-container {
     position: absolute;
-    width: 89px;
-    height: 87px;
-    left: 402px;
-    top: 75px;
+    width: 87px;
+    height: 85px;
+    left: 400px;
+    top: 73px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -63,9 +70,6 @@
 }
 
 #qrcode-container img {
-    position: absolute;
-    left: 5px;
-    top: 4px;
     width: 79px;
     height: 79px;
     object-fit: cover;

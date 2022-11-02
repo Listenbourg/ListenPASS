@@ -184,9 +184,11 @@ html {
 
 #IDCard {
     position: relative;
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5), 0px 2px 4px rgba(0, 0, 0, 0.25), inset 0px 3px 0px rgba(255, 255, 255, 0.25), inset 0px -3px 0px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     z-index: 99;
+    max-width: 502px;
+    max-height: 325px;
+    scale: 0.95;
 }
 
 #IDCard * {
@@ -203,7 +205,8 @@ html {
     z-index: -99;
     min-width: 510px;
     max-width: 510px;
-    height: 333px;
+    width: 502px;
+    height: 325px;
     border-radius: 20px;
 }
 
@@ -246,14 +249,14 @@ html {
 }
 
 @media screen and (max-width: 600px) {
-    #IDCard {
+    #ShareIDCard {
         zoom: 0.68;
     }
 }
 
 .aboutToPrint {
     zoom: 1 !important;
-    transform: scale(3);
+    height: 510px !important;
 }
 
 .aboutToPrint .ShareBase {
@@ -261,18 +264,14 @@ html {
     display: flex;
 }
 
-.aboutToPrint #ShareIDCard {
-    height: 510px;
-}
-
 @media screen and (max-width: 400px) {
-    #IDCard {
+    #ShareIDCard {
         zoom: 0.60;
     }
 }
 
 @media screen and (max-width: 350px) {
-    #IDCard {
+    #ShareIDCard {
         zoom: 0.50;
     }
 }
@@ -318,10 +317,6 @@ html {
         background-color: #111;
     }
 
-    #IDCard {
-        background-color: #fff;
-    }
-
     .CustomLogo {
         background-image: url('../assets/logo-dark.svg');
     }
@@ -334,8 +329,8 @@ html {
 }
 
 #ShareIDCard {
-    width: 521px;
-    height: 350px;
+    width: 533px !important;
+    height: 510px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -343,11 +338,9 @@ html {
 }
 
 .ShareBase {
-    width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    opacity: 0%;
-    display: none;
+    object-fit: cover;
 }

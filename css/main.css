@@ -131,7 +131,7 @@ html.home body {
 .nav .nav-btn:hover {
 	color: #0045ff;
 }
-#IDForm button {
+button {
 	padding: 7px 12px !important;
 	background-color: #0066ff;
 	color: #fff;
@@ -146,9 +146,11 @@ html.home body {
 	font-size: 18px;
 
 	border: 1px solid #0066ff !important;
+
+	width: 100%;
 }
 
-#IDForm button:hover {
+button:hover {
 	background-color: #0045ff;
 	border: 1px solid #0045ff !important;
 	cursor: pointer;

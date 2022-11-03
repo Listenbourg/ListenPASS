@@ -1,247 +1,294 @@
-@import url('https://fonts.cdnfonts.com/css/hk-groteks');
+@import url("https://fonts.cdnfonts.com/css/hk-groteks");
 
 body {
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	display: flex;
+	flex-direction: column-reverse;
 }
 
 html {
-    scroll-behavior: smooth;
+	scroll-behavior: smooth;
+	width: 100%;
 }
 
 * {
-    font-family: 'HK Grotesk', sans-serif;
+	font-family: "HK Grotesk", sans-serif;
+	box-sizing: border-box;
 }
 
-/* Interface de création */
-
-#CustomIDCard {
-    padding: 20px;
-    width: 50vw;
-    height: calc(100% - 40px);
-    overflow-y: scroll;
+html.home,
+html.home body {
+	height: 100%;
 }
 
-#CustomIDCard * {
-    margin: 0;
-    padding: 0;
+#CustomHome {
+	height: 100%;
+}
+
+#CustomIDCard,
+#CustomHome {
+	padding: 20px;
+	width: 100%;
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
 }
 
 #CustomIDCard hr {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    border-color: #55555522;
+	margin-top: 20px;
+}
+#CustomIDCard hr,
+#CustomHome hr {
+	width: 100%;
+	margin-bottom: 10px;
+	border-color: #55555522;
 }
 
 .CustomTitle h2 {
-    margin-bottom: 7px !important;
+	margin-bottom: 7px !important;
 
-    line-height: 28px;
-    font-size: 24px;
+	line-height: 28px;
+	font-size: 24px;
 
-    font-family: 'HK Grotesk', sans-serif;
-    font-weight: 700;
+	font-family: "HK Grotesk", sans-serif;
+	font-weight: 700;
 }
 
 .CustomTitle > p {
-    font-family: 'HK Grotesk', sans-serif;
-    font-weight: 600;
-    font-size: 17px;
-    margin-bottom: 10px !important;
+	font-family: "HK Grotesk", sans-serif;
+	font-weight: 600;
+	font-size: 17px;
+	margin-bottom: 10px !important;
 }
 
 .CustomTitle small {
-    font-weight: 500;
-    font-size: 14px;
-    opacity: 50%;
+	font-weight: 500;
+	font-size: 14px;
+	opacity: 50%;
 }
 
 #IDForm {
-    margin-bottom: 20px !important;
+	margin-bottom: 20px !important;
 }
 
 #IDForm label {
-    font-family: 'HK Grotesk', sans-serif;
-    font-weight: 600;
-    font-size: 14px;
+	font-family: "HK Grotesk", sans-serif;
+	font-weight: 600;
+	font-size: 14px;
 
-    color: #55555599;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+	color: #55555599;
+	text-transform: uppercase;
+	letter-spacing: 1px;
 }
 
-#IDForm input, #IDForm select {
-    margin-bottom: 15px !important;
-    margin-top: 3px !important;
-    padding: 8px 14px !important;
-    font-size: 16px;
-    border-radius: 0px;
-    border: 1px solid #55555555;
-    width: calc(100% - 28px);
-
-    font-family: 'HK Grotesk', sans-serif;
-    font-weight: 500;
-    font-size: 18px;
+#IDForm input,
+#IDForm select {
+	margin-bottom: 15px !important;
+	margin-top: 3px !important;
+	padding: 8px 14px !important;
+	font-size: 16px;
+	border-radius: 0px;
+	border: 1px solid #55555555;
+	font-family: "HK Grotesk", sans-serif;
+	font-weight: 500;
+	font-size: 18px;
+	width: 100%;
 }
 
 #IDForm select {
-    width: 100%;
-    height: 40px;
-    cursor: pointer;
-    background: none;
-    -webkit-appearance: none;
+	width: 100%;
+	height: 40px;
+	cursor: pointer;
+	background: none;
+	-webkit-appearance: none;
 }
 
-#IDForm input:focus, #IDForm select:focus {
-    border: 1px solid #0066ff;
-    outline: 2px solid #0066ff55;
+#IDForm input:focus,
+#IDForm select:focus {
+	border: 1px solid #0066ff;
+	outline: 2px solid #0066ff55;
 }
 
 #IDForm .buttons {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
 }
-
 #IDForm button {
-    padding: 7px 12px !important;
-    font-size: 16px;
-    background-color: #0066ff;
-    color: #fff;
-    font-weight: 500;
-    margin-top: 10px !important;
+	width: 100%;
+	margin-top: 10px !important;
+	font-size: 16px;
+}
+.nav .nav-btn {
+	font-size: 17px;
+	margin: 16px 8px;
+	color: #0066ff;
+	text-decoration: none;
+}
+.nav .nav-btn:hover {
+	color: #0045ff;
+}
+#IDForm button {
+	padding: 7px 12px !important;
+	background-color: #0066ff;
+	color: #fff;
+	font-weight: 500;
 
-    border: none;
+	border-radius: 8px;
 
-    width: 100%;
+	border: none;
 
-    font-family: 'HK Grotesk', sans-serif;
-    font-weight: 500;
-    font-size: 18px;
+	font-family: "HK Grotesk", sans-serif;
+	font-weight: 500;
+	font-size: 18px;
 
-    border: 1px solid #0066ff !important;
+	border: 1px solid #0066ff !important;
 }
 
 #IDForm button:hover {
-    background-color: #0045ff;
-    border: 1px solid #0045ff !important;
-    cursor: pointer;
+	background-color: #0045ff;
+	border: 1px solid #0045ff !important;
+	cursor: pointer;
 }
 
 .downloadButton {
-    background: none !important;
-    border: 1px solid #0066ff !important;
-    color: #0066ff !important;
+	background: none !important;
+	border: 1px solid #0066ff !important;
+	color: #0066ff !important;
 }
 
 .CustomLogo {
-    margin-bottom: 10px !important;
+	margin-bottom: 10px !important;
 
-    background-image: url('../assets/logo.svg');
-    background-repeat: no-repeat;
-    background-size: contain;
+	background-image: url("../assets/logo-listenpass.svg");
+	background-repeat: no-repeat;
+	background-size: contain;
 
-    width: 176px;
-    height: 64px;
+	width: 100%;
+	height: 48px;
 }
 
 /* Interface de prévisualisation */
 
 #PreviewIDCard {
-    padding: 20px;
-    width: 50vw;
-    height: calc(100% - 40px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    user-select: none;
-    pointer-events: none;
+	padding: 20px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	user-select: none;
+	pointer-events: none;
 }
 
 /* Repsonsiive */
 
-@media screen and (max-width: 1070px) {
-    body {
-        display: block;
-    }
+@media screen and (min-width: 1070px) {
+	body {
+		flex-direction: row;
+		height: 100vh;
+	}
+	#PreviewIDCard,
+	#CustomIDCard,
+	#CustomHome {
+		width: 50%;
+	}
+	#CustomIDCard,
+	#CustomHome {
+		height: 100%;
+	}
 }
 
 .terms {
-    margin-top: 20px !important;
-    color: #55555599 !important;
-    font-weight: 500 !important;
+	display: block;
+	color: #55555599 !important;
+	font-weight: 500 !important;
+	margin-top: auto;
+	padding-top: 20px;
 }
 
 @keyframes main {
-    0% {
-        transform: translateY(10px);
-        opacity: 0%;
-    }
-    100% {
-        transform: translateY(0px);
-        opacity: 100%;
-    }
+	0% {
+		transform: translateY(10px);
+		opacity: 0%;
+	}
+	100% {
+		transform: translateY(0px);
+		opacity: 100%;
+	}
 }
 
 @media (prefers-color-scheme: dark) {
-    body {
-        background-color: hsl(255, 7%, 17%);
-    }
+	body {
+		background-color: hsl(255, 7%, 17%);
+	}
 
-    #PreviewIDCard {
-        background-color: hsl(255, 7%, 17%);
-    }
+	#PreviewIDCard {
+		background-color: hsl(255, 7%, 17%);
+	}
 
-    #CustomIDCard {
-      background-color: #1C1B1F;
-      color: white;
-    }
+	#CustomIDCard,
+	#CustomHome {
+		background-color: #1c1b1f;
+		color: white;
+	}
 
-    #IDForm input, #IDForm select, #IDForm select option {
-        border: 1px solid #55555555;
-        color: #fff;
-        background: #27262a !important;
-    }
+	#IDForm input,
+	#IDForm select,
+	#IDForm select option {
+		border: 1px solid #55555555;
+		color: #fff;
+		background: #27262a !important;
+	}
 
-    .CustomLogo {
-        background-image: url('../assets/logo-dark.svg');
-    }
+	.CustomLogo {
+		background-image: url("../assets/logo-dark-listenpass.svg");
+	}
 }
 
 .downloadButton.disabled {
-    cursor: not-allowed !important;
-    opacity: 50%;
-    pointer-events: none;
+	cursor: not-allowed !important;
+	opacity: 50%;
+	pointer-events: none;
 }
 
 .label-error {
-    color: red;
+	color: red;
 }
 .label-error:not(.error-visible) {
-    display: none;
+	display: none;
 }
 
 #PreviewIDCard:not(.visible) canvas#canvas {
-    display: none;
+	display: none;
 }
 
 #PreviewIDCard.visible .waiting {
-    display: none;
+	display: none;
+}
+
+#PreviewIDCard .presentation,
+#PreviewIDCard .waiting {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
 }
 
 #PreviewIDCard .waiting {
-    filter: blur(2px);
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+	filter: blur(2px);
 }
 
 canvas#canvas {
-    max-width: 100%;
-    max-height: 100%;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.nav {
+	display: flex;
+	justify-content: left;
+	margin-left: -8px;
+	margin-bottom: -8px;
 }

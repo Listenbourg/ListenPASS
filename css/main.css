@@ -182,6 +182,8 @@ html.home body {
 	overflow: hidden;
 	user-select: none;
 	pointer-events: none;
+	
+	background: conic-gradient(from 267.64deg at 46.22% 103.08%, #C91212 0deg, #5712C9 360deg);
 }
 
 /* Repsonsiive */
@@ -278,7 +280,8 @@ html.home body {
 }
 
 #PreviewIDCard .waiting {
-	filter: blur(2px);
+	filter: blur(2px) grayscale(100%);
+	opacity: 50%;
 }
 
 canvas#canvas {

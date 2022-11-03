@@ -9,8 +9,8 @@ let cni = null,
 
 window.addEventListener("load", () =>
 	Promise.all([
-		getImg("/assets/CNI.svg").then((img) => (cni = img)),
-		getImg("/assets/CNI-FILI.svg").then((img) => (cni_filo = img)),
+		getImg("./assets/CNI.svg").then((img) => (cni = img)),
+		getImg("./assets/CNI-FILI.svg").then((img) => (cni_filo = img)),
 	])
 );
 

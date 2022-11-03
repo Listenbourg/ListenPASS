@@ -9,8 +9,8 @@ let passeport = null,
 
 window.addEventListener("load", () =>
 	Promise.all([
-		getImg("/assets/PASSEPORT.svg").then((img) => (passeport = img)),
-		getImg("/assets/PASSEPORT-FILI.svg").then((img) => (passeport_filo = img)),
+		getImg("./assets/PASSEPORT.svg").then((img) => (passeport = img)),
+		getImg("./assets/PASSEPORT-FILI.svg").then((img) => (passeport_filo = img)),
 		new FontFace(
 			"Courrier-Prime-BOLD",
 			"url(https://fonts.gstatic.com/s/courierprime/v7/u-4k0q2lgwslOqpF_6gQ8kELY7pMT-Dfqw.woff2)"

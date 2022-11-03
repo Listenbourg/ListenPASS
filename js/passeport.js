@@ -107,6 +107,8 @@ const canvadraw = async (
 	document
 		.querySelector(".buttons .downloadButton")
 		.classList.remove("disabled");
+	// statistiques
+	mixpanel.track('Passeport généré');
 };
 
 /**

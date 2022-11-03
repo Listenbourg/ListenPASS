@@ -71,6 +71,8 @@ const canvadraw = async (
 	document
 		.querySelector(".buttons .downloadButton")
 		.classList.remove("disabled");
+	// statistiques
+	mixpanel.track('Carte d\'identité générée');
 };
 
 const hashCode = (str) => {

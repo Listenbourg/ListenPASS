@@ -158,7 +158,3 @@ const generateSurnameAndGivenNames = (line, user, position, lineLength) => {
 		givenNamesPosition
 	);
 };
-
-module.exports = {
-	generateMrzTd3,
-};

@@ -148,12 +148,26 @@ button {
 	border: 1px solid #0066ff !important;
 
 	width: 100%;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 button:hover {
 	background-color: #0045ff;
 	border: 1px solid #0045ff !important;
 	cursor: pointer;
+}
+
+button span {
+	margin-right: 10px;
+	margin-top: -3px;
+}
+
+a.buttonHref {
+	text-decoration: none;
+	color: inherit;
 }
 
 .downloadButton {
@@ -302,3 +316,11 @@ canvas#canvas {
 .listenPassPromo {
 	background: conic-gradient(from -88.25deg at 47.65% 110.22%, #2B12C9 0deg, #12C987 213.75deg, #2B12C9 360deg) !important;
 }
+
+.material-symbols-outlined {
+	font-variation-settings:
+	'FILL' 0,
+	'wght' 400,
+	'GRAD' 0,
+	'opsz' 48
+  }

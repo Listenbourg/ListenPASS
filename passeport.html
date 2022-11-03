@@ -32,6 +32,8 @@
 		<meta property="og:type" content="website" />
 		<meta property="og:image" content="https://i.ibb.co/6F3K7sJ/image.png" />
 
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
 		<link rel="stylesheet" href="css/main.css" />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap"
@@ -150,11 +152,19 @@
 				/><br />
 
 				<div class="buttons">
-					<button onclick="SubmitIDForm()">Générer</button>
+					<button onclick="SubmitIDForm()">
+						<span class="material-symbols-outlined">
+							done
+						</span>
+						Générer
+					</button>
 					<button
 						class="downloadButton disabled"
 						onclick="DownloadIDForm('cni-listenbourg.png')"
 					>
+						<span class="material-symbols-outlined">
+							file_download
+						</span>
 						Télécharger
 					</button>
 				</div>

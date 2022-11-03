@@ -295,5 +295,5 @@ canvas#canvas {
 
 
 .listenPassPromo {
-	background-color: #0066ff !important;
+	background: conic-gradient(from -88.25deg at 47.65% 110.22%, #2B12C9 0deg, #12C987 213.75deg, #2B12C9 360deg) !important;
 }

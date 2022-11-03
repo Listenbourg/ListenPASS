@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Passeport - LISTENPASS</title>
+		<meta
+			name="description"
+			content="Obtenez immédiatement un passeport au Listenbourg avec ce site web simple d'utilisation. Devenez un vrai citoyen avec des papiers authentifiés et reconnus."
+		/>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+
+		<meta
+			property="og:title"
+			content="Créateur de passeport Listenbourgeoises"
+		/>
+		<meta property="og:site_name" content="vincelinise.com" />
+		<meta
+			property="og:url"
+			content="https://listenbourg.vincelinise.com/carte-identite/"
+		/>
+		<meta
+			property="og:description"
+			content="Obtenez immédiatement un passeport au Listenbourg avec ce site web simple d'utilisation. Devenez un vrai citoyen avec des papiers authentifiés et reconnus."
+		/>
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content="https://i.ibb.co/6F3K7sJ/image.png" />
+
+		<link rel="stylesheet" href="css/main.css" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<!--[if lt IE 7]>
+			<p class="browsehappy">
+				You are using an <strong>outdated</strong> browser. Please
+				<a href="#">upgrade your browser</a> to improve your experience.
+			</p>
+		<![endif]-->
+
+		<div id="PreviewIDCard">
+			<canvas id="canvas"></canvas>
+			<img src="/assets/PASSEPORT.svg" class="waiting" alt="" />
+		</div>
+
+		<div id="CustomIDCard">
+			<div class="CustomTitle">
+				<div class="CustomLogo"></div>
+				<div class="nav">
+					<a href="/" class="nav-btn">Accueil</a
+					><a href="/passeport.html" class="nav-btn">Passeport</a
+					><a href="/cni.html" class="nav-btn">Carte d'identité</a>
+				</div>
+				<h2>Générateur de passeport de la République du Listenbourg</h2>
+				<p>
+					Ce générateur crée un passeport officielle et reconnue du Listenbourg.
+				</p>
+				<small
+					>Ces passeports sont générées et signées par votre ordinateur et
+					aucune donnée ne transite sur nos serveurs.</small
+				>
+			</div>
+			<hr />
+			<div id="IDForm">
+				<label for="Surname"
+					>Nom de famille<span class="label-error">
+						- Information manquante</span
+					></label
+				><br />
+				<input
+					type="text"
+					id="Surname"
+					name="Surname"
+					value="    mArti/^n  "
+					placeholder="e.g. MARTIN"
+					value=""
+					required
+				/><br />
+
+				<label for="Names"
+					>Prénom(s)<span class="label-error">
+						- Information manquante</span
+					></label
+				><br />
+				<input
+					type="text"
+					id="Names"
+					name="Names"
+					value="  Pierre  -   Ale*xandr)e"
+					placeholder="e.g. Gaspard"
+					value=""
+					required
+				/><br />
+
+				<label for="Sex"
+					>Sexe<span class="label-error"> - Information manquante</span></label
+				><br />
+				<select id="Sex" name="Sex">
+					<option value="M">Masculin</option>
+					<option value="F">Féminin</option>
+					<option value="X">Non précisé</option></select
+				><br />
+
+				<label for="BirthDate"
+					>Date de naissance<span class="label-error">
+						- Information manquante / Format incorrect</span
+					></label
+				><br />
+				<input
+					type="text"
+					id="BirthDate"
+					value="01/02/1990"
+					name="BirthDate"
+					placeholder="e.g. 01/02/1990 - Format : JJ/MM/AAAA"
+					required
+				/><br />
+
+				<label for="BirthPlace"
+					>Lieu de naissance<span class="label-error">
+						- Information manquante</span
+					></label
+				><br />
+				<select id="BirthPlace" name="BirthPlace">
+					<option value="Flußerde">Flußerde</option>
+					<option value="Kusterde">Kusterde</option>
+					<option value="Mitteland">Mitteland</option>
+					<option value="Caséière">Caséière</option>
+					<option value="Adriàs">Adriàs</option></select
+				><br />
+
+				<label for="Picture"
+					>Photo d'identité<span class="label-error">
+						- Fichier manquant</span
+					></label
+				><br />
+				<input
+					type="file"
+					id="Picture"
+					name="Picture"
+					accept="image/*"
+					required
+				/><br />
+
+				<div class="buttons">
+					<button onclick="SubmitIDForm()">Générer</button>
+					<button
+						class="downloadButton disabled"
+						onclick="DownloadIDForm('cni-listenbourg.png')"
+					>
+						Télécharger
+					</button>
+				</div>
+			</div>
+			<small class="terms"
+				>(C) 2022 Listenbourg -
+				<a href="https://twitter.com/DevListenbourg">Twitter</a> -
+				<a href="https://github.com/Listenbourg/GenerateurCNI">GitHub</a> -
+				<a href="https://github.com/Listenbourg/GenerateurCNI/issues"
+					>Signaler un problème</a
+				></small
+			>
+		</div>
+		<script src="js/base.js"></script>
+		<script src="js/mrz.js"></script>
+		<script src="js/passeport.js"></script>
+	</body>
+</html>

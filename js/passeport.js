@@ -25,6 +25,24 @@ const randNum = () =>
 		.toString()
 		.padStart(9, "0");
 
+function calculateTextLength(text, font) {
+	const canvas = document.createElement("canvas");
+	const context = canvas.getContext("2d");
+	context.font = font;
+	const metrics = context.measureText(text);
+	return metrics.width;
+}
+
+function preventOverflow(text, font, maxWidth) {
+	let textLength = calculateTextLength(text, font);
+	return text.slice(
+		0,
+		Math.trunc( // calculate the number of characters that can fit in the maxWidth
+			(text.length * maxWidth) / textLength
+		)
+	);
+}
+
 const canvadraw = async (
 	nom,
 	prenom,
@@ -48,8 +66,8 @@ const canvadraw = async (
 			expirationDate: new Date(date_expi.split("/").reverse().join("-")),
 		},
 		user: {
-			surname: nom.trim().toUpperCase(),
-			givenNames: prenom.trim().toUpperCase(),
+			surname: nom.trim().toUpperCase().slice(0, 15 /* max length for the machine-readable zone */),
+			givenNames: prenom.trim().toUpperCase().slice(0, 15 /* max length for the machine-readable zone */),
 			nationality: "LSB",
 			dateOfBirth: new Date(date_naissance.split("/").reverse().join("-")),
 			sex: sexe,
@@ -67,6 +85,15 @@ const canvadraw = async (
 	ctx.fillText("P", 201 * MULTIPLIER, (90 + 15) * MULTIPLIER);
 	ctx.fillText("LIS", 310.5 * MULTIPLIER, (90 + 15) * MULTIPLIER);
 	ctx.fillText(passportNum, 488 * MULTIPLIER, (90 + 15) * MULTIPLIER);
+
+	// How it works: "WWWWWWWWWWWWWWWWWWWWWWWWW" is the biggest text possible before an
+	// overflow (I assumed W is the widest character). If the text WIDTH is bigger than
+	// the max width, we reduce the text size using a math formula (see `preventOverflow`).
+	let maxWidth = Math.trunc(calculateTextLength("WWWWWWWWWWWWWWWWWWWWWWWWW", ctx.font));
+
+	nom = preventOverflow(nom, ctx.font, maxWidth);
+	prenom = preventOverflow(prenom, ctx.font, maxWidth);
+
 	ctx.fillText(nom, 201 * MULTIPLIER, (131.67 + 15) * MULTIPLIER);
 	ctx.fillText(prenom, 201 * MULTIPLIER, (173.33 + 15) * MULTIPLIER);
 	ctx.fillText(
@@ -120,14 +147,17 @@ const validateDate = (date) => {
 	return d instanceof Date && !isNaN(d);
 };
 
+const MAX_SURNAME_LENGTH = 30;
+const MAX_NAMES_LENGTH = 30;
+
 const SubmitIDForm = () => {
 	let form = document.getElementById("IDForm");
 
 	let Picture = form.children["Picture"]?.files?.[0];
 
 	let IDCardData = {
-		ID_Surname: clear(form.children["Surname"].value, 15),
-		ID_Names: clear(form.children["Names"].value, 15),
+		ID_Surname: clear(form.children["Surname"].value, MAX_SURNAME_LENGTH),
+		ID_Names: clear(form.children["Names"].value, MAX_NAMES_LENGTH),
 		ID_BirthDate: form.children["BirthDate"].value.replace(/[^0-9/]/g, ""),
 		ID_Sex: form.children["Sex"].value,
 		ID_Picture: Picture,
@@ -164,8 +194,8 @@ const ApplyIDCard = async (IDCardData) => {
 	const expir = new Date();
 	expir.setFullYear(expir.getFullYear() + 5);
 	await canvadraw(
-		clear(IDCardData.ID_Surname, 15),
-		clear(IDCardData.ID_Names, 15),
+		clear(IDCardData.ID_Surname, MAX_SURNAME_LENGTH),
+		clear(IDCardData.ID_Names, MAX_NAMES_LENGTH),
 		IDCardData.ID_Sex,
 		new Date(
 			IDCardData.ID_BirthDate.split("/").reverse().join("-")

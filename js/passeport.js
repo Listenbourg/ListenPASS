@@ -39,6 +39,7 @@ const canvadraw = async (
 		(window.webkitURL || window.URL).createObjectURL(raw_image)
 	);
 	const passportNum = randNum();
+	const persoNum = randNum();
 	const [MegaText1, MegaText2] = generateMrzTd3({
 		passport: {
 			mrzType: "td3",
@@ -57,6 +58,19 @@ const canvadraw = async (
 	})
 		.split("\n")
 		.map((e) => e.trim());
+
+		const infos = [
+passportNum,
+nom,
+prenom,
+date_naissance,
+sexe,
+date_deliv,
+lieu,
+date_expi,
+persoNum]
+
+applyQRCode(infos);
 	const canvas = document.getElementById("canvas");
 	const ctx = canvas.getContext("2d");
 	canvas.width = SIZE.width;
@@ -79,7 +93,7 @@ const canvadraw = async (
 	ctx.fillText(date_deliv, 201 * MULTIPLIER, (340 + 15) * MULTIPLIER);
 	ctx.fillText(lieu, 396 * MULTIPLIER, (299.33 + 15) * MULTIPLIER);
 	ctx.fillText(date_expi, 396 * MULTIPLIER, (340 + 15) * MULTIPLIER);
-	ctx.fillText(randNum(), 431 * MULTIPLIER, (256.67 + 15) * MULTIPLIER);
+	ctx.fillText(persoNum, 431 * MULTIPLIER, (256.67 + 15) * MULTIPLIER);
 	ctx.font = `${21.75 * MULTIPLIER}px Courrier-Prime-BOLD`;
 	ctx.fillText(MegaText1, 24 * MULTIPLIER, (371 + 15) * MULTIPLIER);
 	ctx.fillText(MegaText2, 24 * MULTIPLIER, (396 + 15) * MULTIPLIER);
@@ -101,6 +115,13 @@ const canvadraw = async (
 		73 * MULTIPLIER,
 		imgPos.width * MULTIPLIER,
 		imgPos.height * MULTIPLIER
+	);
+	ctx.drawImage(
+		document.querySelector("#qrcode"),
+		514.05 * MULTIPLIER,
+		131.05 * MULTIPLIER,
+		78.9 * MULTIPLIER,
+		78.9 * MULTIPLIER
 	);
 	ctx.drawImage(passeport_filo, 0, 0, SIZE.width, SIZE.height);
 	document.querySelector("#PreviewIDCard").classList.add("visible");
@@ -182,4 +203,15 @@ const ApplyIDCard = async (IDCardData) => {
 
 	// scroll up
 	document.getElementById("canvas").scrollIntoView();
+};
+
+const applyQRCode = (infos) => {
+	let QRData = ["V2",...infos]
+		.join(",");
+
+	new QRious({
+		element: document.getElementById("qrcode"),
+		value: btoa(QRData + "," + hashCode(QRData)),
+		size: 512,
+	  });
 };

@@ -199,7 +199,7 @@ a.buttonHref {
 	user-select: none;
 	pointer-events: none;
 	
-	background: conic-gradient(from 267.64deg at 46.22% 103.08%, #C91212 0deg, #5712C9 360deg);
+	background: conic-gradient(from -88.25deg at 47.65% 110.22%, #2B12C9 0deg, #12C987 213.75deg, #2B12C9 360deg) !important;
 }
 
 /* Repsonsiive */

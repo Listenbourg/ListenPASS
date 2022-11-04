@@ -25,7 +25,7 @@ const randNum = () =>
 		.toString()
 		.padStart(9, "0");
 
-function calculateTextLength(text, font) {
+const calculateTextLength = (text, font) => {
 	const canvas = document.createElement("canvas");
 	const context = canvas.getContext("2d");
 	context.font = font;
@@ -33,7 +33,7 @@ function calculateTextLength(text, font) {
 	return metrics.width;
 }
 
-function preventOverflow(text, font, maxWidth) {
+const preventOverflow = (text, font, maxWidth) => {
 	let textLength = calculateTextLength(text, font);
 	return text.slice(
 		0,

@@ -265,6 +265,10 @@ a.buttonHref {
 	.CustomLogo {
 		background-image: url("../assets/logo-dark-listenpass.svg");
 	}
+
+	a {
+		color: #0099ff;
+	}
 }
 
 .downloadButton.disabled {

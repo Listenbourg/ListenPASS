@@ -23,7 +23,7 @@
 @media (prefers-color-scheme: dark) {
 	:root {
 		--clr-text: white;
-		--clr-bg-light: 255, 7%, 17%;
+		--clr-bg-light: 255, 5%, 16%;
 		--clr-bg-dark: 255, 7%, 11%;
 		--logo: url("../assets/logo-dark-listenpass.svg");
 	}
@@ -111,7 +111,7 @@ a {
 	font-weight: 600;
 	font-size: 14px;
 
-	color: hsla(var(--clr-grey), 99);
+	color: hsla(var(--clr-grey), 99%);
 	text-transform: uppercase;
 	letter-spacing: 1px;
 }
@@ -121,7 +121,7 @@ a {
 	margin: 3px 0 15px 0;
 	padding: 8px 14px;
 	border-radius: 0px;
-	border: 1px solid hsla(var(--clr-grey), 55);
+	border: 1px solid hsla(var(--clr-grey), 55%);
 	background: hsl(var(--clr-bg-light));
 	font-weight: 500;
 	font-size: 18px;
@@ -271,13 +271,6 @@ a.buttonHref {
 }
 
 @media (prefers-color-scheme: dark) {
-	#IDForm input,
-	#IDForm select,
-	#IDForm select option {
-		border: 1px solid hsla(var(--clr-grey), 55);
-		color: hsl(var(--clr-text));
-	}
-
 	a {
 		color: #0099ff;
 	}

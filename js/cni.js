@@ -60,7 +60,7 @@ const canvadraw = async (
 		imgPos.height * MULTIPLIER
 	);
 	ctx.drawImage(
-		document.querySelector("#qrcode img"),
+		document.querySelector("#qrcode"),
 		400.05 * MULTIPLIER,
 		77.05 * MULTIPLIER,
 		78.9 * MULTIPLIER,
@@ -73,19 +73,6 @@ const canvadraw = async (
 		.classList.remove("disabled");
 	// statistiques
 	mixpanel.track('Carte d\'identité générée');
-};
-
-const hashCode = (str) => {
-	var hash = 0,
-		i,
-		chr;
-	if (str.length === 0) return hash;
-	for (i = 0; i < str.length; i++) {
-		chr = str.charCodeAt(i);
-		hash = (hash << 5) - hash + chr;
-		hash |= 0; // Convert to 32bit integer
-	}
-	return hash;
 };
 
 const CreateIDCard = (IDCardData) => {
@@ -157,7 +144,6 @@ const ApplyIDCard = async (IDCardElem, IDCardData) => {
 		IDCardData.ID_Picture
 	);
 
-	IDCardElem.classList.remove("waiting");
 	document
 		.getElementsByClassName("downloadButton")[0]
 		.classList.remove("disabled");
@@ -172,8 +158,9 @@ const applyQRCode = (IDCard) => {
 		.map(([k, v]) => v)
 		.join(",");
 
-	const qrc = new QRCode(
-		document.getElementById("qrcode"),
-		btoa(QRData + "," + hashCode(QRData))
-	);
+	new QRious({
+		element: document.getElementById("qrcode"),
+		value: btoa(QRData + "," + hashCode(QRData)),
+		size: 512,
+	  });
 };

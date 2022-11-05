@@ -230,7 +230,6 @@ a.buttonHref {
 	overflow: hidden;
 	user-select: none;
 	pointer-events: none;
-
 	background: var(--gradient);
 }
 
@@ -277,6 +276,10 @@ a.buttonHref {
 	#IDForm select option {
 		border: 1px solid hsla(var(--clr-grey), 55);
 		color: hsl(var(--clr-text));
+	}
+
+	a {
+		color: #0099ff;
 	}
 }
 

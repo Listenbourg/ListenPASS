@@ -1,10 +1,40 @@
 @import url("https://fonts.cdnfonts.com/css/hk-groteks");
 
+:root {
+	--font-listen: "HK ListenFont", sans-serif;
+	--clr-red: 0, 84%, 43%;
+	--clr-green: 158, 84%, 43%;
+	--clr-blue-light: 216, 100%, 50%;
+	--clr-blue: 224, 100%, 50%;
+	--clr-blue-dark: 248, 84%, 43%;
+	--clr-grey: 0, 0%, 33%;
+	--clr-bg-light: 0, 0%, 100%;
+	--clr-bg-dark: 0, 0%, 100%;
+	--clr-text: black;
+	--gradient: conic-gradient(
+		from -88.25deg at 47.65% 110.22%,
+		hsl(var(--clr-blue-dark)) 0deg,
+		hsl(var(--clr-green)) 213.75deg,
+		hsl(var(--clr-blue-dark)) 360deg
+	);
+	--logo: url("../assets/logo-listenpass.svg");
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--clr-text: white;
+		--clr-bg-light: 255, 7%, 17%;
+		--clr-bg-dark: 255, 7%, 11%;
+		--logo: url("../assets/logo-dark-listenpass.svg");
+	}
+}
+
 body {
 	margin: 0;
 	padding: 0;
 	width: 100%;
 	display: flex;
+	background-color: hsl(var(--clr-bg-light));
 }
 
 html {
@@ -13,13 +43,18 @@ html {
 }
 
 * {
-	font-family: "HK Grotesk", sans-serif;
+	font-family: var(--font-listen);
 	box-sizing: border-box;
+	color: var(--clr-text);
 }
 
 html.home,
 html.home body {
 	height: 100%;
+}
+
+a {
+	color: hsl(var(--clr-blue-light));
 }
 
 #CustomHome {
@@ -28,6 +63,8 @@ html.home body {
 
 #CustomIDCard,
 #CustomHome {
+	color: hsl(var(--clr-text));
+	background-color: hsl(var(--clr-bg-dark));
 	padding: 20px;
 	width: 100%;
 	overflow-y: auto;
@@ -43,24 +80,21 @@ html.home body {
 #CustomHome hr {
 	width: 100%;
 	margin-bottom: 10px;
-	border-color: #55555522;
+	border-color: hsla(var(--clr-grey), 22%);
 }
 
 .CustomTitle h2 {
-	margin-bottom: 7px !important;
+	margin-bottom: 7px;
 
 	line-height: 28px;
 	font-size: 24px;
-
-	font-family: "HK Grotesk", sans-serif;
 	font-weight: 700;
 }
 
 .CustomTitle > p {
-	font-family: "HK Grotesk", sans-serif;
 	font-weight: 600;
 	font-size: 17px;
-	margin-bottom: 10px !important;
+	margin-bottom: 10px;
 }
 
 .CustomTitle small {
@@ -70,28 +104,25 @@ html.home body {
 }
 
 #IDForm {
-	margin-bottom: 20px !important;
+	margin-bottom: 20px;
 }
 
 #IDForm label {
-	font-family: "HK Grotesk", sans-serif;
 	font-weight: 600;
 	font-size: 14px;
 
-	color: #55555599;
+	color: hsla(var(--clr-grey), 99);
 	text-transform: uppercase;
 	letter-spacing: 1px;
 }
 
 #IDForm input,
 #IDForm select {
-	margin-bottom: 15px !important;
-	margin-top: 3px !important;
-	padding: 8px 14px !important;
-	font-size: 16px;
+	margin: 3px 0 15px 0;
+	padding: 8px 14px;
 	border-radius: 0px;
-	border: 1px solid #55555555;
-	font-family: "HK Grotesk", sans-serif;
+	border: 1px solid hsla(var(--clr-grey), 55);
+	background: hsl(var(--clr-bg-light));
 	font-weight: 500;
 	font-size: 18px;
 	width: 100%;
@@ -103,12 +134,13 @@ html.home body {
 	cursor: pointer;
 	background: none;
 	-webkit-appearance: none;
+	background: hsl(var(--clr-bg-light));
 }
 
 #IDForm input:focus,
 #IDForm select:focus {
-	border: 1px solid #0066ff;
-	outline: 2px solid #0066ff55;
+	border: 1px solid hsl(var(--clr-blue));
+	outline: 2px solid hsla(var(--clr-blue), 55%);
 }
 
 #IDForm .buttons {
@@ -119,21 +151,21 @@ html.home body {
 }
 #IDForm button {
 	width: 100%;
-	margin-top: 10px !important;
+	margin-top: 10px;
 	font-size: 16px;
 }
 .nav .nav-btn {
 	font-size: 17px;
 	margin: 16px 8px;
-	color: #0066ff;
+	color: hsl(var(--clr-blue-light));
 	text-decoration: none;
 }
 .nav .nav-btn:hover {
-	color: #0045ff;
+	color: hsl(var(--clr-blue-dark));
 }
 button {
-	padding: 7px 12px !important;
-	background-color: #0066ff;
+	padding: 7px 12px;
+	background-color: hsl(var(--clr-blue-light));
 	color: #fff;
 	font-weight: 500;
 
@@ -141,11 +173,11 @@ button {
 
 	border: none;
 
-	font-family: "HK Grotesk", sans-serif;
+	font-family: var(--ListenFont);
 	font-weight: 500;
 	font-size: 18px;
 
-	border: 1px solid #0066ff !important;
+	border: 1px solid hsl(var(--clr-blue-light));
 
 	width: 100%;
 
@@ -155,8 +187,8 @@ button {
 }
 
 button:hover {
-	background-color: #0045ff;
-	border: 1px solid #0045ff !important;
+	background-color: hsl(var(--clr-blue));
+	border: 1px solid hsl(var(--clr-blue));
 	cursor: pointer;
 }
 
@@ -171,15 +203,15 @@ a.buttonHref {
 }
 
 .downloadButton {
-	background: none !important;
-	border: 1px solid #0066ff !important;
-	color: #0066ff !important;
+	background: none;
+	border: 1px solid hsl(var(--clr-blue-light));
+	color: hsl(var(--clr-blue-light));
 }
 
 .CustomLogo {
-	margin-bottom: 10px !important;
+	margin-bottom: 10px;
 
-	background-image: url("../assets/logo-listenpass.svg");
+	background-image: var(--logo);
 	background-repeat: no-repeat;
 	background-size: contain;
 
@@ -198,15 +230,15 @@ a.buttonHref {
 	overflow: hidden;
 	user-select: none;
 	pointer-events: none;
-	
-	background: conic-gradient(from 267.64deg at 46.22% 103.08%, #C91212 0deg, #5712C9 360deg);
+
+	background: var(--gradient);
 }
 
 /* Repsonsiive */
 
 @media screen and (max-width: 1070px) {
 	body {
-		display: block !important;
+		display: block;
 		height: fit-content;
 	}
 	#PreviewIDCard,
@@ -222,8 +254,8 @@ a.buttonHref {
 
 .terms {
 	display: block;
-	color: #55555599 !important;
-	font-weight: 500 !important;
+	color: hsla(var(--clr-grey), 99);
+	font-weight: 500;
 	margin-top: auto;
 	padding-top: 20px;
 }
@@ -240,41 +272,22 @@ a.buttonHref {
 }
 
 @media (prefers-color-scheme: dark) {
-	body {
-		background-color: hsl(255, 7%, 17%);
-	}
-
-	#PreviewIDCard {
-		background-color: hsl(255, 7%, 17%);
-	}
-
-	#CustomIDCard,
-	#CustomHome {
-		background-color: #1c1b1f;
-		color: white;
-	}
-
 	#IDForm input,
 	#IDForm select,
 	#IDForm select option {
-		border: 1px solid #55555555;
-		color: #fff;
-		background: #27262a !important;
-	}
-
-	.CustomLogo {
-		background-image: url("../assets/logo-dark-listenpass.svg");
+		border: 1px solid hsla(var(--clr-grey), 55);
+		color: hsl(var(--clr-text));
 	}
 }
 
 .downloadButton.disabled {
-	cursor: not-allowed !important;
+	cursor: not-allowed;
 	opacity: 50%;
 	pointer-events: none;
 }
 
 .label-error {
-	color: red;
+	color: var(--clr-red);
 }
 .label-error:not(.error-visible) {
 	display: none;
@@ -312,15 +325,10 @@ canvas#canvas {
 	margin-bottom: -8px;
 }
 
-
 .listenPassPromo {
-	background: conic-gradient(from -88.25deg at 47.65% 110.22%, #2B12C9 0deg, #12C987 213.75deg, #2B12C9 360deg) !important;
+	background: var(--gradient);
 }
 
 .material-symbols-outlined {
-	font-variation-settings:
-	'FILL' 0,
-	'wght' 400,
-	'GRAD' 0,
-	'opsz' 48
-  }
+	font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+}

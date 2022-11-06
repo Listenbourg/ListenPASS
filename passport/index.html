@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Mon Passeport - ListenPASS</title>
+		<meta
+			name="description"
+			content="Générez vos documents officiels en un clic avec ListenPass, un site officiel de la République Listenbourgeoise."
+		/>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+
+		<meta property="og:title" content="Mon Passeport - ListenPASS" />
+		<meta property="og:site_name" content="ListenPASS" />
+		<meta
+			property="og:url"
+			content="https://listenbourg.vincelinise.com/listenpass/"
+		/>
+		<meta
+			property="og:description"
+			content="Générez vos documents officiels en un clic avec ListenPass, un site officiel de la République Listenbourgeoise."
+		/>
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content="https://i.ibb.co/S0s99mB/image.png" />
+
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+		/>
+
+		<link rel="stylesheet" href="/css/design-system.css" />
+		<link rel="stylesheet" href="/css/listenpass.css" />
+		<link rel="stylesheet" href="/css/layout-outil-2.css" />
+		<link rel="stylesheet" href="/css/theme.css" />
+
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<!--[if lt IE 7]>
+			<p class="browsehappy">
+				You are using an <strong>outdated</strong> browser. Please
+				<a href="#">upgrade your browser</a> to improve your experience.
+			</p>
+		<![endif]-->
+
+		<div id="PreviewIDCard" class="Preview">
+			<canvas id="canvas"></canvas>
+			<img src="/assets/PASSEPORT.svg" class="waiting" alt="" />
+		</div>
+
+		<div class="IDCard">
+			<div class="Title">
+				<div class="Logo"></div>
+				<nav>
+					<div class="left">
+						<a href="https://listenbourg.org" class="nav-btn important"
+							>listenbourg.org</a
+						>
+					</div>
+					<div class="right">
+						<a href="/" class="nav-btn">Accueil</a
+						><a href="/passport" class="nav-btn current">Passeport</a
+						><a href="/cni" class="nav-btn">Carte d'identité</a>
+					</div>
+				</nav>
+				<h2>Générateur de passeport de la République du Listenbourg</h2>
+				<p>
+					Ce générateur crée un passeport officielle et reconnue du Listenbourg.
+				</p>
+				<small
+					>Ces passeports sont générées et signées par votre ordinateur et
+					aucune donnée ne transite sur nos serveurs.</small
+				>
+			</div>
+			<hr />
+			<form id="IDForm" onsubmit="return false">
+				<label for="Surname"
+					>Nom de famille<span class="label-error">
+						- Information manquante</span
+					></label
+				>
+				<input
+					type="text"
+					id="Surname"
+					name="Surname"
+					placeholder="e.g. MARTIN"
+					value=""
+					required
+				/>
+
+				<label for="Names"
+					>Prénom(s)<span class="label-error">
+						- Information manquante</span
+					></label
+				>
+				<input
+					type="text"
+					id="Names"
+					name="Names"
+					placeholder="e.g. Gaspard"
+					value=""
+					required
+				/>
+
+				<label for="Sex"
+					>Sexe<span class="label-error"> - Information manquante</span></label
+				>
+				<div class="selector">
+					<select id="Sex" name="Sex">
+						<option value="M">Masculin</option>
+						<option value="F">Féminin</option>
+						<option value="X">Non précisé /optioninaire / Autre</option>
+					</select>
+				</div>
+
+				<label for="BirthDate"
+					>Date de naissance<span class="label-error">
+						- Information manquante / Format incorrect</span
+					></label
+				>
+				<input
+					type="text"
+					id="BirthDate"
+					name="BirthDate"
+					placeholder="e.g. 01/02/1990 - Format : JJ/MM/AAAA"
+					required
+				/>
+
+				<label for="BirthPlace"
+					>Lieu de naissance<span class="label-error">
+						- Information manquante</span
+					></label
+				>
+				<div class="selector">
+					<select id="BirthPlace" name="BirthPlace">
+						<option value="Flußerde">Flußerde</option>
+						<option value="Kusterde">Kusterde</option>
+						<option value="Mitteland">Mitteland</option>
+						<option value="Caséière">Caséière</option>
+						<option value="Adriàs">Adriàs</option>
+					</select>
+				</div>
+
+				<label for="Picture"
+					>Photo d'identité<span class="label-error">
+						- Fichier manquant</span
+					></label
+				>
+				<input
+					type="file"
+					id="Picture"
+					name="Picture"
+					accept="image/*"
+					required
+				/>
+
+				<div class="buttons">
+					<button onclick="SubmitIDForm()">
+						<span class="material-symbols-outlined"> done </span>
+						Générer
+					</button>
+					<button
+						class="outline-only disabled"
+						onclick="DownloadIDForm('cni-listenbourg.png')"
+					>
+						<span class="material-symbols-outlined"> file_download </span>
+						Télécharger
+					</button>
+				</div>
+			</form>
+			<footer>
+				(C) 2022 Listenbourg -
+				<a href="https://twitter.com/DevListenbourg">Twitter</a> -
+				<a href="https://github.com/Listenbourg/ListenPASS">GitHub</a> -
+				<a href="https://github.com/Listenbourg/ListenPASS/issues"
+					>Signaler un problème</a
+				>
+			</footer>
+		</div>
+		<canvas style="display: none" id="qrcode"></canvas>
+		<script src="js/base.js"></script>
+		<script src="js/mrz.js"></script>
+		<script src="js/passeport.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+		<script type="text/javascript">
+			(function (f, b) {
+				if (!b.__SV) {
+					var e, g, i, h;
+					window.mixpanel = b;
+					b._i = [];
+					b.init = function (e, f, c) {
+						function g(a, d) {
+							var b = d.split(".");
+							2 == b.length && ((a = a[b[0]]), (d = b[1]));
+							a[d] = function () {
+								a.push([d].concat(Array.prototype.slice.call(arguments, 0)));
+							};
+						}
+						var a = b;
+						"undefined" !== typeof c ? (a = b[c] = []) : (c = "mixpanel");
+						a.people = a.people || [];
+						a.toString = function (a) {
+							var d = "mixpanel";
+							"mixpanel" !== c && (d += "." + c);
+							a || (d += " (stub)");
+							return d;
+						};
+						a.people.toString = function () {
+							return a.toString(1) + ".people (stub)";
+						};
+						i =
+							"disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(
+								" "
+							);
+						for (h = 0; h < i.length; h++) g(a, i[h]);
+						var j = "set set_once union unset remove delete".split(" ");
+						a.get_group = function () {
+							function b(c) {
+								d[c] = function () {
+									call2_args = arguments;
+									call2 = [c].concat(Array.prototype.slice.call(call2_args, 0));
+									a.push([e, call2]);
+								};
+							}
+							for (
+								var d = {},
+									e = ["get_group"].concat(
+										Array.prototype.slice.call(arguments, 0)
+									),
+									c = 0;
+								c < j.length;
+								c++
+							)
+								b(j[c]);
+							return d;
+						};
+						b._i.push([e, f, c]);
+					};
+					b.__SV = 1.2;
+					e = f.createElement("script");
+					e.type = "text/javascript";
+					e.async = !0;
+					e.src =
+						"undefined" !== typeof MIXPANEL__LIB_URL
+							? MIXPANEL__LIB_URL
+							: "file:" === f.location.protocol &&
+							  "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)
+							? "https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js"
+							: "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";
+					g = f.getElementsByTagName("script")[0];
+					g.parentNode.insertBefore(e, g);
+				}
+			})(document, window.mixpanel || []);
+
+			// Enabling the debug mode flag is useful during implementation,
+			// but it's recommended you remove it for production
+			mixpanel.init("5d59f3f37b867c330a6add5c7cdd4ac8", { debug: true });
+
+			mixpanel.track("Passeport");
+		</script>
+	</body>
+</html>

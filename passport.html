@@ -7,7 +7,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<title>Ma carte d'identité - ListenPASS</title>
+		<title>Mon Passeport - ListenPASS</title>
 		<meta
 			name="description"
 			content="Générez vos documents officiels en un clic avec ListenPass, un site officiel de la République Listenbourgeoise."
@@ -16,7 +16,7 @@
 
 		<link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
 
-		<meta property="og:title" content="Ma carte d'identité - ListenPASS" />
+		<meta property="og:title" content="Mon Passeport - ListenPASS" />
 		<meta property="og:site_name" content="ListenPASS" />
 		<meta
 			property="og:url"
@@ -34,7 +34,7 @@
 			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
 		/>
 
-		<link rel="stylesheet" href="./css/design-system.css" />
+		<link rel="stylesheet" href="cni.html" />
 		<link rel="stylesheet" href="./css/listenpass.css" />
 		<link rel="stylesheet" href="./css/layout-outil-2.css" />
 		<link rel="stylesheet" href="./css/theme.css" />
@@ -54,7 +54,7 @@
 
 		<div id="PreviewIDCard" class="Preview">
 			<canvas id="canvas"></canvas>
-			<img src="./assets/CNI.svg" class="waiting" alt="Carte d'Identité" />
+			<img src="./assets/PASSEPORT.svg" class="waiting" alt="" />
 		</div>
 
 		<div class="IDCard">
@@ -68,58 +68,72 @@
 					</div>
 					<div class="right">
 						<a href="./" class="nav-btn">Accueil</a
-						><a href="./passport" class="nav-btn">Passeport</a
-						><a href="./cni" class="nav-btn current">Carte d'identité</a>
+						><a href="./passport.html" class="nav-btn current">Passeport</a
+						><a href="./cni.html" class="nav-btn">Carte d'identité</a>
 					</div>
 				</nav>
-				<h2>Générateur de carte d'identité de la République du Listenbourg</h2>
+				<h2>Générateur de passeport de la République du Listenbourg</h2>
 				<p>
-					Ce générateur crée une carte d'identité officielle et reconnue du
-					Listenbourg.
+					Ce générateur crée un passeport officielle et reconnue du Listenbourg.
 				</p>
 				<small
-					>Ces cartes sont générées et signées par votre ordinateur et aucune
-					donnée ne transite sur nos serveurs.</small
+					>Ces passeports sont générées et signées par votre ordinateur et
+					aucune donnée ne transite sur nos serveurs.</small
 				>
-
-				<div id="errors"></div>
 			</div>
 			<hr />
 			<form id="IDForm" onsubmit="return false">
 				<label for="Surname"
 					>Nom de famille<span class="label-error">
 						- Information manquante</span
-					>
-				</label>
+					></label
+				>
 				<input
 					type="text"
 					id="Surname"
 					name="Surname"
 					placeholder="e.g. MARTIN"
+					value=""
 					required
 				/>
 
 				<label for="Names"
-					>Prénom(s)<span class="label-error"> - Information manquante</span>
-				</label>
+					>Prénom(s)<span class="label-error">
+						- Information manquante</span
+					></label
+				>
 				<input
 					type="text"
 					id="Names"
 					name="Names"
 					placeholder="e.g. Gaspard"
+					value=""
 					required
 				/>
 
 				<label for="Sex"
-					>Sexe<span class="label-error"> - Information manquante</span>
-				</label>
+					>Sexe<span class="label-error"> - Information manquante</span></label
+				>
 				<div class="selector">
 					<select id="Sex" name="Sex">
 						<option value="M">Masculin</option>
 						<option value="F">Féminin</option>
-						<option value="X">Non précisé / Non binaire / Autre</option>
+						<option value="X">Non précisé /optioninaire / Autre</option>
 					</select>
 				</div>
+
+				<label for="BirthDate"
+					>Date de naissance<span class="label-error">
+						- Information manquante / Format incorrect</span
+					></label
+				>
+				<input
+					type="text"
+					id="BirthDate"
+					name="BirthDate"
+					placeholder="e.g. 01/02/1990 - Format : JJ/MM/AAAA"
+					required
+				/>
 
 				<label for="BirthPlace"
 					>Lieu de naissance<span class="label-error">
@@ -137,8 +151,10 @@
 				</div>
 
 				<label for="Picture"
-					>Photo d'identité<span class="label-error"> - Fichier manquant</span>
-				</label>
+					>Photo d'identité<span class="label-error">
+						- Fichier manquant</span
+					></label
+				>
 				<input
 					type="file"
 					id="Picture"
@@ -171,8 +187,9 @@
 			</footer>
 		</div>
 		<canvas style="display: none" id="qrcode"></canvas>
-		<script src="./js/base.js"></script>
-		<script src="./js/cni.js"></script>
+		<script src="js/base.js"></script>
+		<script src="js/mrz.js"></script>
+		<script src="js/passeport.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
 		<script type="text/javascript">
 			(function (f, b) {
@@ -248,7 +265,7 @@
 			// but it's recommended you remove it for production
 			mixpanel.init("5d59f3f37b867c330a6add5c7cdd4ac8", { debug: true });
 
-			mixpanel.track("Carte d'identité");
+			mixpanel.track("Passeport");
 		</script>
 	</body>
 </html>

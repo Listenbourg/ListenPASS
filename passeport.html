@@ -82,7 +82,7 @@
 				>
 			</div>
 			<hr />
-			<form id="IDForm" onsubmit="SubmitIDForm();return false">
+			<form id="IDForm" onsubmit="return false">
 				<label for="Surname"
 					>Nom de famille<span class="label-error">
 						- Information manquante</span
@@ -164,7 +164,7 @@
 				/>
 
 				<div class="buttons">
-					<button onclick="SubmitIDForm()" type="submit">
+					<button onclick="SubmitIDForm()">
 						<span class="material-symbols-outlined"> done </span>
 						Générer
 					</button>

@@ -68,7 +68,7 @@ const errorLabel = (error, label) => (
 const DownloadIDForm = (name) => {
 	let canvas = document.getElementById("canvas");
 
-	let link = document.createElement("a");
+	const link = document.createElement("a");
 	link.download = name;
 	link.href = canvas.toDataURL("image/png");
 	link.click();

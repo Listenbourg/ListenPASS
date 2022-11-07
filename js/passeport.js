@@ -31,17 +31,18 @@ const calculateTextLength = (text, font) => {
 	context.font = font;
 	const metrics = context.measureText(text);
 	return metrics.width;
-}
+};
 
 const preventOverflow = (text, font, maxWidth) => {
 	let textLength = calculateTextLength(text, font);
 	return text.slice(
 		0,
-		Math.trunc( // calculate the number of characters that can fit in the maxWidth
+		Math.trunc(
+			// calculate the number of characters that can fit in the maxWidth
 			(text.length * maxWidth) / textLength
 		)
 	);
-}
+};
 
 const canvadraw = async (
 	nom,
@@ -67,8 +68,14 @@ const canvadraw = async (
 			expirationDate: new Date(date_expi.split("/").reverse().join("-")),
 		},
 		user: {
-			surname: nom.trim().toUpperCase().slice(0, 15 /* max length for the machine-readable zone */),
-			givenNames: prenom.trim().toUpperCase().slice(0, 15 /* max length for the machine-readable zone */),
+			surname: nom
+				.trim()
+				.toUpperCase()
+				.slice(0, 15 /* max length for the machine-readable zone */),
+			givenNames: prenom
+				.trim()
+				.toUpperCase()
+				.slice(0, 15 /* max length for the machine-readable zone */),
 			nationality: "LSB",
 			dateOfBirth: new Date(date_naissance.split("/").reverse().join("-")),
 			sex: sexe,
@@ -77,18 +84,19 @@ const canvadraw = async (
 		.split("\n")
 		.map((e) => e.trim());
 
-		const infos = [
-passportNum,
-nom,
-prenom,
-date_naissance,
-sexe,
-date_deliv,
-lieu,
-date_expi,
-persoNum]
+	const infos = [
+		passportNum,
+		nom,
+		prenom,
+		date_naissance,
+		sexe,
+		date_deliv,
+		lieu,
+		date_expi,
+		persoNum,
+	];
 
-applyQRCode(infos);
+	applyQRCode(infos);
 	const canvas = document.getElementById("canvas");
 	const ctx = canvas.getContext("2d");
 	canvas.width = SIZE.width;
@@ -103,7 +111,9 @@ applyQRCode(infos);
 	// How it works: "WWWWWWWWWWWWWWWWWWWWWWWWW" is the biggest text possible before an
 	// overflow (I assumed W is the widest character). If the text WIDTH is bigger than
 	// the max width, we reduce the text size using a math formula (see `preventOverflow`).
-	let maxWidth = Math.trunc(calculateTextLength("WWWWWWWWWWWWWWWWWWWWWWWWW", ctx.font));
+	let maxWidth = Math.trunc(
+		calculateTextLength("WWWWWWWWWWWWWWWWWWWWWWWWW", ctx.font)
+	);
 
 	nom = preventOverflow(nom, ctx.font, maxWidth);
 	prenom = preventOverflow(prenom, ctx.font, maxWidth);
@@ -152,11 +162,9 @@ applyQRCode(infos);
 	);
 	ctx.drawImage(passeport_filo, 0, 0, SIZE.width, SIZE.height);
 	document.querySelector("#PreviewIDCard").classList.add("visible");
-	document
-		.querySelector(".buttons .downloadButton")
-		.classList.remove("disabled");
+	document.querySelector("#downloadBtn").classList.remove("disabled");
 	// statistiques
-	mixpanel.track('Passeport généré');
+	mixpanel.track("Passeport généré");
 };
 
 /**
@@ -180,9 +188,9 @@ const SubmitIDForm = () => {
 		ID_Surname: clear(form.children["Surname"].value, MAX_SURNAME_LENGTH),
 		ID_Names: clear(form.children["Names"].value, MAX_NAMES_LENGTH),
 		ID_BirthDate: form.children["BirthDate"].value.replace(/[^0-9/]/g, ""),
-		ID_Sex: form.children["Sex"].value,
+		ID_Sex: form.children["Sex"].children[0].value,
 		ID_Picture: Picture,
-		ID_BirthPlace: clear(form.children["BirthPlace"].value),
+		ID_BirthPlace: clear(form.children["BirthPlace"].children[0].value),
 	};
 
 	if (
@@ -192,7 +200,7 @@ const SubmitIDForm = () => {
 			errorLabel(clear(IDCardData.ID_Names).length <= 0, "Names"),
 			errorLabel(
 				!(
-					IDCardData.ID_BirthDate.length === 10 &&
+					IDCardData.ID_BirthDate.length == 10 &&
 					/^([0-9]{2})\/([0-9]{2})\/([0-9]{4})$/.test(
 						IDCardData.ID_BirthDate
 					) &&
@@ -227,21 +235,18 @@ const ApplyIDCard = async (IDCardData) => {
 		IDCardData.ID_Picture
 	);
 
-	document
-		.getElementsByClassName("downloadButton")[0]
-		.classList.remove("disabled");
+	document.getElementById("downloadBtn").classList.remove("disabled");
 
 	// scroll up
 	document.getElementById("canvas").scrollIntoView();
 };
 
 const applyQRCode = (infos) => {
-	let QRData = ["V2",...infos]
-		.join(",");
+	let QRData = ["V2", ...infos].join(",");
 
 	new QRious({
 		element: document.getElementById("qrcode"),
 		value: btoa(QRData + "," + hashCode(QRData)),
 		size: 512,
-	  });
+	});
 };

@@ -53,7 +53,7 @@
 		<![endif]-->
 
 		<div id="PreviewIDCard" class="Preview">
-			<canvas id="canvas"></canvas>
+			<canvas id="canvas" crossorigin></canvas>
 			<img src="./assets/PASSEPORT.svg" class="waiting" alt="" />
 		</div>
 
@@ -114,8 +114,8 @@
 				<label for="Sex"
 					>Sexe<span class="label-error"> - Information manquante</span></label
 				>
-				<div class="selector">
-					<select id="Sex" name="Sex">
+				<div class="selector" id="Sex">
+					<select name="Sex">
 						<option value="M">Masculin</option>
 						<option value="F">Féminin</option>
 						<option value="X">Non précisé /optioninaire / Autre</option>
@@ -128,7 +128,7 @@
 					></label
 				>
 				<input
-					type="date"
+					type="text"
 					id="BirthDate"
 					name="BirthDate"
 					placeholder="e.g. 01/02/1990 - Format : JJ/MM/AAAA"
@@ -140,8 +140,8 @@
 						- Information manquante</span
 					></label
 				>
-				<div class="selector">
-					<select id="BirthPlace" name="BirthPlace">
+				<div class="selector" id="BirthPlace">
+					<select name="BirthPlace">
 						<option value="Flußerde">Flußerde</option>
 						<option value="Kusterde">Kusterde</option>
 						<option value="Mitteland">Mitteland</option>
@@ -169,14 +169,15 @@
 						Générer
 					</button>
 					<button
+						id="downloadBtn"
 						class="outline-only disabled"
-						onclick="DownloadIDForm('cni-listenbourg.png')"
+						onclick="DownloadIDForm('passport-listenbourg.png')"
 					>
 						<span class="material-symbols-outlined"> file_download </span>
 						Télécharger
 					</button>
 				</div>
-			</form>
+			</div>
 			<footer>
 				(C) 2022 Listenbourg -
 				<a href="https://twitter.com/DevListenbourg">Twitter</a> -

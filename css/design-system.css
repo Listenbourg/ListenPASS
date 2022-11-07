@@ -58,10 +58,12 @@ button span {
   color: inherit;
 }
 
-form {
+form,
+.form {
   margin-bottom: 20px;
 }
-form label {
+form label,
+.form label {
   font-weight: 600;
   font-size: 14px;
   color: var(--clr-text-alt);
@@ -69,7 +71,8 @@ form label {
   letter-spacing: 1px;
   border-radius: var(--border-radius);
 }
-form select {
+form select,
+.form select {
   width: 100%;
   height: 40px;
   cursor: pointer;
@@ -80,10 +83,12 @@ form select {
      -moz-appearance: none;
           appearance: none;
 }
-form .selector {
+form .selector,
+.form .selector {
   position: relative;
 }
-form .selector:after {
+form .selector:after,
+.form .selector:after {
   content: ">";
   position: absolute;
   right: 2em;
@@ -93,22 +98,27 @@ form .selector:after {
   transform: rotate(90deg) scaleY(1.5);
   transition: all 0.2s ease-out;
 }
-form .selector:focus-within:after {
+form .selector:focus-within:after,
+.form .selector:focus-within:after {
   transform: rotate(-90deg) scaleY(1.5);
   transition: all 0.2s ease-out;
 }
-form .buttons {
+form .buttons,
+.form .buttons {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
 }
-form button {
+form button,
+.form button {
   width: 100%;
   margin-top: 10px;
   font-size: 16px;
 }
-form input, form select {
+form input, form select,
+.form input,
+.form select {
   display: block;
   margin: 3px 0 15px 0;
   padding: 8px 14px;
@@ -120,7 +130,9 @@ form input, form select {
   width: 100%;
   border: none;
 }
-form input:focus, form select:focus {
+form input:focus, form select:focus,
+.form input:focus,
+.form select:focus {
   outline: 2px solid var(--clr-blue);
 }
 

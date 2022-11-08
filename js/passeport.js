@@ -180,11 +180,11 @@ const MAX_SURNAME_LENGTH = 30;
 const MAX_NAMES_LENGTH = 30;
 
 const SubmitIDForm = () => {
-	let form = document.getElementById("IDForm");
+	const form = document.getElementById("IDForm");
 
-	let Picture = form.children["Picture"]?.files?.[0];
+	const Picture = form.children["Picture"]?.files?.[0];
 
-	let IDCardData = {
+	const IDCardData = {
 		ID_Surname: clear(form.children["Surname"].value, MAX_SURNAME_LENGTH),
 		ID_Names: clear(form.children["Names"].value, MAX_NAMES_LENGTH),
 		ID_BirthDate: form.children["BirthDate"].value,
@@ -202,8 +202,8 @@ const SubmitIDForm = () => {
 				!(
 					IDCardData.ID_BirthDate.length == 10 &&
 					/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/.test(IDCardData.ID_BirthDate) &&
-					Number(IDCardData.ID_BirthDate.split("-")[1]) <= 31 &&
-					Number(IDCardData.ID_BirthDate.split("-")[2]) <= 12 &&
+					IDCardData.ID_BirthDate.split("-")[2] <= 31 &&
+					IDCardData.ID_BirthDate.split("-")[1] <= 12 &&
 					validateDate(IDCardData.ID_BirthDate)
 				),
 				"BirthDate"

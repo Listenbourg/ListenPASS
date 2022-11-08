@@ -205,8 +205,8 @@ const SubmitIDForm = () => {
 					/^([0-9]{2})\/([0-9]{2})\/([0-9]{4})$/.test(
 						IDCardData.ID_BirthDate
 					) &&
-					Number(IDCardData.ID_BirthDate.split("/")[0]) <= 31 &&
-					Number(IDCardData.ID_BirthDate.split("/")[1]) <= 12 &&
+					Number(IDCardData.ID_BirthDate.split("-")[0]) <= 31 &&
+					Number(IDCardData.ID_BirthDate.split("-")[1]) <= 12 &&
 					validateDate(IDCardData.ID_BirthDate)
 				),
 				"BirthDate"

@@ -172,7 +172,6 @@ const canvadraw = async (
  * @return {boolean}
  */
 const validateDate = (date) => {
-	date = date.reverse();
 	const d = new Date(date);
 	return d instanceof Date && !isNaN(d);
 };
@@ -202,11 +201,9 @@ const SubmitIDForm = () => {
 			errorLabel(
 				!(
 					IDCardData.ID_BirthDate.length == 10 &&
-					/^([0-9]{2})\/([0-9]{2})\/([0-9]{4})$/.test(
-						IDCardData.ID_BirthDate
-					) &&
-					Number(IDCardData.ID_BirthDate.split("-")[0]) <= 31 &&
-					Number(IDCardData.ID_BirthDate.split("-")[1]) <= 12 &&
+					/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/.test(IDCardData.ID_BirthDate) &&
+					Number(IDCardData.ID_BirthDate.split("-")[1]) <= 31 &&
+					Number(IDCardData.ID_BirthDate.split("-")[2]) <= 12 &&
 					validateDate(IDCardData.ID_BirthDate)
 				),
 				"BirthDate"

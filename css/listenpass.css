@@ -1,4 +1,3 @@
-@charset "UTF-8";
 :root {
   --gradient: conic-gradient(
   	from -88.25deg at 47.65% 110.22%,
@@ -6,8 +5,14 @@
   	var(--clr-green) 213.75deg,
   	var(--clr-blue) 360deg
   );
+  --logo: url("../assets/logo-listenpass.svg");
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --logo: url("../assets/logo-dark-listenpass.svg");
+  }
+}
 #Home {
   height: 100%;
 }
@@ -15,7 +20,7 @@
 .IDCard,
 .Home {
   color: var(--clr-text);
-  background-color: var(--clr-bg-);
+  background-color: var(--clr-bg);
   padding: 20px;
   width: 100%;
   overflow-y: auto;
@@ -42,8 +47,6 @@ a.btn button {
   height: 96px;
 }
 
-/* Interface de prévisualisation */
-/* Repsonsiive */
 @media screen and (max-width: 1070px) {
   body {
     display: block;

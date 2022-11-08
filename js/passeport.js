@@ -172,7 +172,8 @@ const canvadraw = async (
  * @return {boolean}
  */
 const validateDate = (date) => {
-	const d = new Date(date.split("/").reverse().join("-"));
+	date = date.reverse();
+	const d = new Date(date);
 	return d instanceof Date && !isNaN(d);
 };
 
@@ -187,7 +188,7 @@ const SubmitIDForm = () => {
 	let IDCardData = {
 		ID_Surname: clear(form.children["Surname"].value, MAX_SURNAME_LENGTH),
 		ID_Names: clear(form.children["Names"].value, MAX_NAMES_LENGTH),
-		ID_BirthDate: form.children["BirthDate"].value.replace(/[^0-9/]/g, ""),
+		ID_BirthDate: form.children["BirthDate"].value,
 		ID_Sex: form.children["Sex"].children[0].value,
 		ID_Picture: Picture,
 		ID_BirthPlace: clear(form.children["BirthPlace"].children[0].value),

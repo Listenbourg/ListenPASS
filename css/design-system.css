@@ -129,6 +129,7 @@ form input, form select,
   font-size: 18px;
   width: 100%;
   border: none;
+  color-scheme: var(--input-scheme);
 }
 form input:focus, form select:focus,
 .form input:focus,

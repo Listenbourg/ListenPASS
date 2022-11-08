@@ -125,6 +125,7 @@ form,
 		font-size: 18px;
 		width: 100%;
 		border: none;
+		color-scheme: var(--input-scheme);
 
 		&:focus {
 			outline: 2px solid var(--clr-blue);

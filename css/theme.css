@@ -13,6 +13,7 @@
   --clr-green: #12ca86;
   --logo: url("../assets/logo-listenpass.svg");
   --border-radius: 8px;
+  --input-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,5 +24,6 @@
     --clr-text: hsl(0, 0%, 100%);
     --clr-text-alt: hsl(150, 1%, 56%);
     --logo: url("../assets/logo-dark-listenpass.svg");
+    --input-scheme: dark;
   }
 }

@@ -42,6 +42,17 @@ nav {
 	}
 }
 
+.Logo {
+	margin-bottom: 10px;
+
+	background-image: var(--logo);
+	background-repeat: no-repeat;
+	background-size: contain;
+
+	width: 100%;
+	height: 96px;
+}
+
 // PREVIEW PANEL
 
 .Preview {

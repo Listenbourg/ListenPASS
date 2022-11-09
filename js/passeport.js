@@ -63,7 +63,7 @@ const canvadraw = async (
 		passport: {
 			mrzType: "td3",
 			type: "p",
-			issuingCountry: "LSB",
+			issuingCountry: "LIS",
 			number: passportNum,
 			expirationDate: new Date(date_expi.split("/").reverse().join("-")),
 		},

@@ -1,0 +1,36 @@
+@import url("https://fonts.cdnfonts.com/css/hk-groteks");
+
+:root {
+	--font-listen: "HK Grotesk", sans-serif;
+
+	--clr-bg: #ffffff;
+	--clr-bg-alt: #e3e3e3;
+	--clr-border: #b5b5b5;
+
+	--clr-text: #212121;
+	--clr-text-alt: #999999;
+
+	--clr-red: #db0000;
+	--clr-red-alt: #fe2a2a;
+
+	--clr-blue: #0066ff;
+	--clr-blue-alt: #3785fb;
+
+	--clr-green: #12ca86;
+
+	--border-radius: 8px;
+	--input-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--clr-bg: hsl(255, 7%, 11%);
+		--clr-bg-alt: hsl(255, 5%, 16%);
+		--clr-border: hsl(240, 3%, 23%);
+
+		--clr-text: hsl(0, 0%, 100%);
+		--clr-text-alt: hsl(150, 1%, 56%);
+
+		--input-scheme: dark;
+	}
+}

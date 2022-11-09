@@ -68,11 +68,9 @@ const canvadraw = async (
 	);
 	ctx.drawImage(cni_filo, 0, 0, SIZE.width, SIZE.height);
 	document.querySelector("#PreviewIDCard").classList.add("visible");
-	document
-		.querySelector(".buttons .downloadButton")
-		.classList.remove("disabled");
+	document.querySelector("#downloadBtn").classList.remove("disabled");
 	// statistiques
-	mixpanel.track('Carte d\'identité générée');
+	mixpanel.track("Carte d'identité générée");
 };
 
 const CreateIDCard = (IDCardData) => {
@@ -104,9 +102,9 @@ const SubmitIDForm = () => {
 	let IDCardData = {
 		ID_Surname: clear(form.children["Surname"].value, 15),
 		ID_Names: clear(form.children["Names"].value, 15),
-		ID_Sex: form.children["Sex"].value,
+		ID_Sex: form.children["Sex"].children[0].value,
 		ID_Picture: Picture,
-		ID_BirthPlace: form.children["BirthPlace"].value,
+		ID_BirthPlace: form.children["BirthPlace"].children[0].value,
 	};
 
 	IDCardData.ID_Validity = true;
@@ -144,9 +142,7 @@ const ApplyIDCard = async (IDCardElem, IDCardData) => {
 		IDCardData.ID_Picture
 	);
 
-	document
-		.getElementsByClassName("downloadButton")[0]
-		.classList.remove("disabled");
+	document.getElementById("downloadBtn").classList.remove("disabled");
 
 	// scroll up
 	document.getElementById("canvas").scrollIntoView();
@@ -162,5 +158,5 @@ const applyQRCode = (IDCard) => {
 		element: document.getElementById("qrcode"),
 		value: btoa(QRData + "," + hashCode(QRData)),
 		size: 512,
-	  });
+	});
 };

@@ -1,0 +1,153 @@
+html,
+body {
+  scroll-behavior: smooth;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  background-color: var(--clr-bg);
+  font-family: var(--font-listen);
+  color: var(--clr-text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: var(--clr-blue);
+}
+a:hover {
+  color: var(--clr-blue-alt);
+}
+
+button {
+  padding: 7px 12px;
+  --clr-btn: var(--clr-red);
+  --border-width: 2px;
+  background-color: var(--clr-btn);
+  outline: var(--border-width) solid var(--clr-btn);
+  outline-offset: -1px; /*to avoid white space due to the radius*/
+  border: none;
+  margin: var(--border-width);
+  color: #fff;
+  font-weight: 500;
+  border-radius: var(--border-radius);
+  font-family: var(--ListenFont);
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button.outline-only {
+  color: var(--clr-text);
+  background-color: transparent;
+}
+button.disabled {
+  cursor: not-allowed;
+  opacity: 50%;
+  pointer-events: none;
+}
+button:hover {
+  --clr-btn: var(--clr-red-alt);
+  cursor: pointer;
+}
+button span {
+  margin-right: 10px;
+  margin-top: -3px;
+  color: inherit;
+}
+
+form,
+.form {
+  margin-bottom: 20px;
+}
+form label,
+.form label {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--clr-text-alt);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: var(--border-radius);
+}
+form select,
+.form select {
+  width: 100%;
+  height: 40px;
+  cursor: pointer;
+  background: none;
+  background: var(--clr-bg-alt);
+  border-radius: var(--border-radius);
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+form .selector,
+.form .selector {
+  position: relative;
+}
+form .selector:after,
+.form .selector:after {
+  content: ">";
+  position: absolute;
+  right: 2em;
+  margin: auto 0;
+  top: 25%;
+  color: var(--clr-text-alt);
+  transform: rotate(90deg) scaleY(1.5);
+  transition: all 0.2s ease-out;
+}
+form .selector:focus-within:after,
+.form .selector:focus-within:after {
+  transform: rotate(-90deg) scaleY(1.5);
+  transition: all 0.2s ease-out;
+}
+form .buttons,
+.form .buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+form button,
+.form button {
+  width: 100%;
+  margin-top: 10px;
+  font-size: 16px;
+}
+form input, form select,
+.form input,
+.form select {
+  display: block;
+  margin: 3px 0 15px 0;
+  padding: 8px 14px;
+  border-radius: var(--border-radius);
+  background: var(--clr-bg-alt);
+  color: var(--clr-text-alt);
+  font-weight: 500;
+  font-size: 18px;
+  width: 100%;
+  border: none;
+  color-scheme: var(--input-scheme);
+}
+form input:focus, form select:focus,
+.form input:focus,
+.form select:focus {
+  outline: 2px solid var(--clr-blue);
+}
+
+hr {
+  width: 100%;
+  border: solid 1px var(--clr-border);
+  margin: 1rem 0;
+}
+
+footer {
+  display: block;
+  color: var(--clr-text-alt);
+  font-weight: 500;
+  margin-top: auto;
+  padding-top: 20px;
+  font-size: smaller;
+}

@@ -1,0 +1,72 @@
+.Title h2 {
+  margin-bottom: 8;
+  line-height: 28px;
+  font-size: 24px;
+  font-weight: 700;
+}
+.Title > p {
+  font-weight: 600;
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+.Title small {
+  font-weight: 500;
+  font-size: 14px;
+  opacity: 50%;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-block: 10px;
+}
+nav > * {
+  display: flex;
+  gap: 16px;
+}
+
+.nav-btn {
+  font-size: 17px;
+  text-decoration: none;
+}
+.nav-btn.current {
+  text-decoration: underline;
+}
+.nav-btn.important {
+  color: var(--clr-red);
+}
+.nav-btn.important:hover {
+  color: var(--clr-red-alt);
+}
+
+.Preview {
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+  background: var(--gradient);
+}
+.Preview:not(.visible) #canvas {
+  display: none;
+}
+.Preview.visible .waiting {
+  display: none;
+}
+.Preview .waiting {
+  filter: blur(2px) grayscale(100%);
+  opacity: 50%;
+}
+.Preview .presentation, .Preview .waiting {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}

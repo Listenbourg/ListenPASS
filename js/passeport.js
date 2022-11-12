@@ -76,7 +76,7 @@ const canvadraw = async (
 				.trim()
 				.toUpperCase()
 				.slice(0, 15 /* max length for the machine-readable zone */),
-			nationality: "LSB",
+			nationality: "LIS",
 			dateOfBirth: new Date(date_naissance.split("/").reverse().join("-")),
 			sex: sexe,
 		},
